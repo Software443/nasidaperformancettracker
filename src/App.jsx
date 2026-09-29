@@ -9,7 +9,7 @@ import {
 import {
   LayoutDashboard, ClipboardList, TrendingUp, Users as UsersIcon, Info, Filter,
   RefreshCw, DollarSign, Briefcase, CheckCircle2, Clock, AlertTriangle, Circle,
-  Plus, Pencil, Trash2, X, ArrowLeftRight, Calculator, FlaskConical,
+  Plus, Pencil, Trash2, X, ArrowLeftRight, Calculator, FlaskConical, Download,
   Building2, UserMinus, Scale, Layers, Upload, PanelLeftClose, PanelLeftOpen,
 } from "lucide-react";
 
@@ -1000,6 +1000,22 @@ export default function App() {
     const { error } = await supabase.from("investments").delete().eq("id", id);
     if (!error) setInvestments(investments.filter((x) => x.id !== id));
   }
+  function exportInvestments(format) {
+    const fields = IMPORT_FIELDS.map(([field, label]) => ({ field, label }));
+    const rows = [
+      fields.map(({ label }) => label),
+      ...investments.map((investment) => fields.map(({ field }) => investment[field] ?? "")),
+    ];
+    if (format === "csv") {
+      rows.slice(1).forEach((row) => row.forEach((value, index) => {
+        if (typeof value === "string" && /^[\t\r ]*[=+@-]/.test(value)) row[index] = `'${value}`;
+      }));
+    }
+    const worksheet = XLSX.utils.aoa_to_sheet(rows);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Investments");
+    XLSX.writeFile(workbook, `investment-records.${format}`, { bookType: format });
+  }
 
   const GlobalStyle = () => (
     <style>{`
@@ -1225,8 +1241,8 @@ export default function App() {
           <section key="overview" className="nasida-fade">
             <div style={styles.pageHeader}>
               <div>
-                <h1 style={styles.h1}>Overview</h1>
-                <p style={styles.pageSub}>Department appraisals &amp; investment register &bull; 2026</p>
+                <h1 style={styles.h1}>Investment Overview</h1>
+                <p style={styles.pageSub}>Department appraisals &amp; investment Tracker &bull; 2026</p>
               </div>
               <div style={{ display: "flex", gap: 8 }}>
                 <button className="nasida-icon-btn" style={styles.iconBtn} title="Filters" onClick={() => setShowFilters((s) => !s)}>
@@ -1286,7 +1302,7 @@ export default function App() {
                   { value: summary.fdiJobs.toLocaleString(), label: "FROM FDI", tone: "up" },
                   { value: summary.ddiJobs.toLocaleString(), label: "FROM DDI", tone: "up" },
                 ]} />
-              <KpiCard icon={Briefcase} label="INVESTMENTS RECORDED" value={Math.round(animatedInvestments)}
+              <KpiCard icon={Briefcase} label="INVESTMENTS/SECTOR RECORDED" value={Math.round(animatedInvestments)}
                 subs={[
                   { value: summary.fdiCount, label: "FDI DEALS", tone: "neutral" },
                   { value: summary.ddiCount, label: "DDI DEALS", tone: "neutral" },
@@ -1505,8 +1521,20 @@ export default function App() {
 
         {tab === "investments" && (
           <section key="investments" className="nasida-fade">
-            <h1 style={styles.h1}>Investment Records</h1>
-            <p style={styles.pageSub}>{user.role === "admin" ? "You can add, edit, and remove records." : "View only — investment data is managed by Admin."}</p>
+            <div style={styles.pageHeader}>
+              <div>
+                <h1 style={styles.h1}>Investment Records</h1>
+                <p style={styles.pageSub}>{user.role === "admin" ? "You can add, edit, and remove records." : "View only — investment data is managed by Admin."}</p>
+              </div>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => exportInvestments("csv")}>
+                  <Download size={14} /> CSV
+                </button>
+                <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => exportInvestments("xlsx")}>
+                  <Download size={14} /> Excel
+                </button>
+              </div>
+            </div>
 
             {user.role === "admin" && (
               <form className="nasida-card" style={styles.card} onSubmit={submitInvestment}>

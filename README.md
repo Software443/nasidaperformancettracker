@@ -35,21 +35,11 @@ nasida-preview-local/
 Accounts are created from the Supabase Dashboard (there's no self-service signup in
 the app, since this is an internal tool):
 
-1. Go to **Authentication → Users → Add user → Create new user**.
-2. Enter an email and password.
-3. Expand **User Metadata** (or edit the user after creating them) and add:
-   ```json
-   { "name": "Your Name", "role": "admin" }
-   ```
-   A trigger in `schema.sql` automatically creates a matching row in the `profiles`
-   table the moment the user is created, using this metadata.
-4. For department staff accounts, use `"role": "staff"` plus a `"department"` field,
-   e.g. `{ "name": "Tamuno Wagbara", "role": "staff", "department": "IPF" }`. Valid
-   department codes are: `IPF`, `PPP`, `EODB`, `S&I`, `ACCOUNT`, `COMMS`, `ADMIN`.
+1. Go to **Authentication → Users → Add user → Create new user** and enter the representative's email and password. You may include their name in user metadata, but do not use metadata to assign roles or departments.
+2. The database creates a safe default profile with the `staff` role and no department. In **Table Editor → profiles**, assign the representative's department to that profile. Valid department codes are `IPF`, `PPP`, `EODB`, `S&I`, `ACCOUNT`, `COMMS`, and `ADMIN`.
+3. Department staff can add, edit, and delete appraisal records for their assigned department only. Investment records, workforce records, user management, and custom KPIs remain admin-only. Staff can view the shared dashboards and records.
 
-If you ever create a user without setting `role` in metadata, the trigger defaults
-them to `"staff"` with no department — you can fix this later by editing their row
-directly in the **Table Editor → profiles**.
+To create the first administrator, create the auth user as above, then set that user's profile `role` to `admin` and leave `department` empty in **Table Editor → profiles**. Profile roles and departments are not editable through the public app API.
 
 ## 3. Get your project's API keys
 

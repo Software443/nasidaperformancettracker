@@ -10,18 +10,19 @@ import {
   LayoutDashboard, ClipboardList, TrendingUp, Users as UsersIcon, Info, Filter,
   RefreshCw, DollarSign, Briefcase, CheckCircle2, Clock, AlertTriangle, Circle,
   Plus, Pencil, Trash2, X, ArrowLeftRight, Calculator, FlaskConical, Download,
-  Building2, UserMinus, Scale, Layers, Upload, PanelLeftClose, PanelLeftOpen,
+  Building2, UserMinus, Scale, Layers, Upload, CalendarDays, Menu,
 } from "lucide-react";
 
 const LOGO_SRC = "data:image/png;base64,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";
 
 const DEPARTMENTS = ["IPF", "PPP", "EODB", "S&I", "ACCOUNT", "COMMS", "ADMIN"];
 const STATUSES = ["Stalled", "Ongoing", "Completed"];
-const STATUS_COLOR = { Completed: "#1f7a4d", Ongoing: "#d9a441", Stalled: "#b5493f" };
+const STATUS_COLOR = { Completed: "#42AD4E", Ongoing: "#d9a441", Stalled: "#b5493f" };
 const STATUS_ICON = { Completed: CheckCircle2, Ongoing: Clock, Stalled: AlertTriangle };
-const SOURCE_COLOR = { FDI: "#0b3d2e", DDI: "#d9a441", HYBRID: "#1f7a4d" };
+const SOURCE_COLOR = { FDI: "#153C20", DDI: "#d9a441", HYBRID: "#42AD4E" };
+const SOURCE_PALETTE = ["#153C20", "#42AD4E", "#9AD7A0"];
 const INVESTMENT_STATUSES = ["Announced", "Actualized"];
-const INVESTMENT_STATUS_COLOR = { Announced: "#d9a441", Actualized: "#1f7a4d" };
+const INVESTMENT_STATUS_COLOR = { Announced: "#d9a441", Actualized: "#42AD4E" };
 const IMPORT_FIELDS = [
   ["company_investor", "Company / Investor", true],
   ["project_description", "Project description", false],
@@ -46,7 +47,7 @@ const IMPORT_ALIASES = {
   department: ["department", "facilitatingdepartment", "dept"],
   status: ["status", "investmentstatus"],
 };
-const SECTOR_PALETTE = ["#0b3d2e", "#1f7a4d", "#3fae67", "#7dc98f", "#d9a441", "#b5493f", "#5b6b62", "#8fc2a4"];
+const SECTOR_PALETTE = ["#153C20", "#42AD4E", "#5FBC66", "#9AD7A0", "#d9a441", "#b5493f", "#5b6b62", "#B0DDB4"];
 const LGA_MAP_POINTS = {
   "lafia": { x: 186, y: 135 },
   "karu": { x: 228, y: 74 },
@@ -284,7 +285,7 @@ const DESIGNATION_JOB_CATEGORY = {
   "Senior Portfolio Manager": "Fulltime", "Senior Analyst": "Fulltime", "Analyst": "Contract",
   "Intern": "Pool", "NYSC": "NYSC", "IT Student": "IT",
 };
-const GENDER_COLOR = { Male: "#0b3d2e", Female: "#7dc98f" };
+const GENDER_COLOR = { Male: "#153C20", Female: "#9AD7A0" };
 
 const FIRST_NAMES_M = ["Emeka", "Musa", "Tunde", "Chidi", "Ibrahim", "Segun", "Yusuf", "Kelechi", "Aliyu", "Femi", "Obinna", "Bello"];
 const FIRST_NAMES_F = ["Amina", "Ngozi", "Fatima", "Chiamaka", "Halima", "Bukola", "Grace", "Zainab", "Adaeze", "Hauwa", "Funke", "Blessing"];
@@ -420,11 +421,7 @@ function useCountUp(value, duration = 800) {
 }
 
 function BrandMark({ size = 40 }) {
-  return (
-    <div style={{ background: "#fff", borderRadius: "50%", padding: size * 0.16, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.18)", flexShrink: 0 }}>
-      <img src={LOGO_SRC} alt="NASIDA" style={{ height: size * 0.68, width: "auto", display: "block" }} />
-    </div>
-  );
+  return <img src={LOGO_SRC} alt="NASIDA" style={{ height: size * 0.68, width: "auto", display: "block", flexShrink: 0 }} />;
 }
 
 function generateInsights(investments, target, fmtM) {
@@ -505,6 +502,9 @@ export default function App() {
   const [loginError, setLoginError] = useState("");
   const [loggingIn, setLoggingIn] = useState(false);
   const [tab, setTab] = useState("overview");
+  const [investmentView, setInvestmentView] = useState("all");
+  const [investmentYear, setInvestmentYear] = useState(String(new Date().getFullYear()));
+  const [investmentQuarter, setInvestmentQuarter] = useState(Math.ceil((new Date().getMonth() + 1) / 3));
   const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
     try { return localStorage.getItem("nasida-sidebar-collapsed") === "true" || window.innerWidth <= 900; } catch { return false; }
   });
@@ -643,11 +643,20 @@ export default function App() {
   const investmentByDept = useMemo(() => {
     return DEPARTMENTS.map((d) => ({
       department: d,
-      total: investments.filter((i) => i.department === d).reduce((a, b) => a + Number(b.amount || 0), 0),
-      deals: investments.filter((i) => i.department === d).length,
+      Announced: investments.filter((i) => i.department === d && i.status === "Announced").reduce((total, investment) => total + Number(investment.amount || 0), 0),
+      Actualized: investments.filter((i) => i.department === d && i.status === "Actualized").reduce((total, investment) => total + Number(investment.amount || 0), 0),
     }));
   }, [investments]);
-
+  const investmentYears = useMemo(() => [...new Set([
+    String(new Date().getFullYear()),
+    ...investments.map((investment) => String(investment.date_recorded || "").slice(0, 4)).filter((year) => /^\d{4}$/.test(year)),
+  ])].sort((a, b) => Number(b) - Number(a)), [investments]);
+  const quarterlyInvestments = useMemo(() => investments.filter((investment) => {
+    const date = String(investment.date_recorded || "");
+    const month = Number(date.slice(5, 7));
+    return date.slice(0, 4) === investmentYear && month >= 1 && month <= 12 && Math.ceil(month / 3) === investmentQuarter;
+  }), [investments, investmentYear, investmentQuarter]);
+  const displayedInvestments = investmentView === "quarterly" ? quarterlyInvestments : investments;
   const [customKpis, setCustomKpis] = useState([]);
   const [allProfiles, setAllProfiles] = useState([]);
   const [kpiForm, setKpiForm] = useState({ name: "", description: "", dataset: "investments", formula: "", format: "number" });
@@ -818,6 +827,11 @@ export default function App() {
   const ovInvestments = useMemo(() => {
     return investments.filter((r) => (!ovSector || normalizeName(r.sector) === normalizeName(ovSector)) && (!ovLga || normalizeName(r.lga) === normalizeName(ovLga)) && (!ovSource || r.source === ovSource) && (!ovInvestStatus || r.status === ovInvestStatus));
   }, [investments, ovSector, ovLga, ovSource, ovInvestStatus]);
+
+  const investmentBySource = useMemo(() => ["FDI", "DDI", "HYBRID"].map((source) => ({
+    source,
+    total: ovInvestments.filter((investment) => investment.source === source).reduce((total, investment) => total + Number(investment.amount || 0), 0),
+  })), [ovInvestments]);
 
   const sectorOptions = useMemo(() => Object.values(normalizedDisplayMap(investments, "sector")), [investments]);
   const lgaOptions = useMemo(() => Object.values(normalizedDisplayMap(investments, "lga")), [investments]);
@@ -1000,11 +1014,11 @@ export default function App() {
     const { error } = await supabase.from("investments").delete().eq("id", id);
     if (!error) setInvestments(investments.filter((x) => x.id !== id));
   }
-  function exportInvestments(format) {
+  function exportInvestments(format, records = investments) {
     const fields = IMPORT_FIELDS.map(([field, label]) => ({ field, label }));
     const rows = [
       fields.map(({ label }) => label),
-      ...investments.map((investment) => fields.map(({ field }) => investment[field] ?? "")),
+      ...records.map((investment) => fields.map(({ field }) => investment[field] ?? "")),
     ];
     if (format === "csv") {
       rows.slice(1).forEach((row) => row.forEach((value, index) => {
@@ -1023,25 +1037,35 @@ export default function App() {
       @keyframes nasidaSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
       .nasida-fade { animation: nasidaFadeIn 0.4s ease; }
       .nasida-card { transition: transform .18s ease, box-shadow .18s ease; }
-      .nasida-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(11,61,46,0.14); }
-      .nasida-nav-item { transition: background .2s ease, color .2s ease; }
-      .nasida-nav-item:hover:not(.nasida-nav-active) { background: rgba(255,255,255,0.12); color: #fff; }
+      .nasida-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(21,60,32,0.14); }
+      .nasida-nav-item { transition: background .18s ease, color .18s ease, transform .18s ease; }
+      .nasida-nav-item:hover:not(.nasida-nav-active) { background: rgba(255,255,255,.09); color: #fff; transform: translateX(2px); }
+      .nasida-nav-active svg { color: #42AD4E; }
+      .nasida-nav-label { display: flex; align-items: center; gap: 8px; }
+      .nasida-nav-label::after { content: ""; height: 1px; flex: 1; background: rgba(255,255,255,.16); }
+      .nasida-sidebar-brand { border: 1px solid rgba(255,255,255,.14); border-radius: 12px; background: rgba(255,255,255,.055); padding: 13px 8px 11px; margin: 28px 4px 24px; box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
+      .nasida-user-block { display: flex; align-items: center; gap: 9px; min-width: 0; padding: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; background: rgba(255,255,255,.055); }
+      .nasida-user-avatar { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; flex: 0 0 32px; border-radius: 9px; background: #d9a441; color: #173F21; font-size: 11px; font-weight: 800; }
+      .nasida-user-details { min-width: 0; }
+      .nasida-user-details > div:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
       .nasida-progress-fill { transition: width 1.1s cubic-bezier(.22,.9,.32,1); }
       .nasida-btn { transition: transform .12s ease, box-shadow .12s ease, background .15s ease; }
       .nasida-btn:hover { transform: translateY(-1px); }
       .nasida-row { transition: background .15s ease; }
-      .nasida-row:hover { background: #f2f7f3; }
+      .nasida-row:hover { background: #F3F8F0; }
       .nasida-icon-btn { transition: background .15s ease, transform .15s ease; cursor: pointer; }
-      .nasida-icon-btn:hover { background: #eaf3ee; }
+      .nasida-icon-btn:hover { background: #EFF6EC; }
       .nasida-spin { animation: nasidaSpin 0.5s linear; }
       .nasida-pill { transition: background .15s ease, color .15s ease; cursor: pointer; }
       select, input, textarea, button { font-family: inherit; }
       *, *::before, *::after { box-sizing: border-box; }
-      html, body, #root { min-height: 100%; }
+      html, body, #root { min-height: 100%; font-family: "Trebuchet MS", sans-serif; }
       body { margin: 0; overflow-x: hidden; }
-      .nasida-sidebar { position: relative; transition: width .2s ease, padding .2s ease; }
-      .nasida-sidebar-toggle { position: absolute; top: 16px; right: 14px; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; background: rgba(255,255,255,.1); color: #fff; cursor: pointer; }
-      .nasida-sidebar-toggle:hover { background: rgba(255,255,255,.2); }
+      .nasida-sidebar { position: relative; height: 100vh; overflow-y: auto; overscroll-behavior: contain; transition: width .2s ease, padding .2s ease, transform .22s ease; }
+      .nasida-sidebar-toggle { position: absolute; top: 16px; right: 14px; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border: 0; border-radius: 6px; background: transparent; color: #fff; cursor: pointer; }
+      .nasida-sidebar-toggle:hover { background: rgba(255,255,255,.12); }
+      .nasida-sidebar-toggle:focus-visible { outline: 2px solid #d9a441; outline-offset: 2px; }
+      .nasida-mobile-menu, .nasida-mobile-backdrop { display: none; }
       .nasida-sidebar-collapsed .nasida-sidebar { width: 72px; padding-left: 10px; padding-right: 10px; }
       .nasida-sidebar-collapsed .nasida-sidebar-toggle { right: 21px; }
       .nasida-sidebar-collapsed .nasida-sidebar-brand-text,
@@ -1049,10 +1073,11 @@ export default function App() {
       .nasida-sidebar-collapsed .nasida-nav-text,
       .nasida-sidebar-collapsed .nasida-sidebar-footer > :not(.nasida-currency-row) { display: none; }
       .nasida-sidebar-collapsed .nasida-sidebar > div:first-of-type { margin-top: 24px; }
+      .nasida-sidebar-collapsed .nasida-sidebar-brand { margin-left: 0; margin-right: 0; padding: 10px 4px 8px; }
       .nasida-sidebar-collapsed .nasida-nav-item { justify-content: center; padding: 10px; width: 100%; }
       .nasida-sidebar-collapsed .nasida-nav { gap: 8px; }
       .nasida-sidebar-collapsed .nasida-sidebar-footer { margin-top: auto; }
-      .nasida-main { min-width: 0; }
+      .nasida-main { min-width: 0; height: 100vh; overflow-y: auto; overscroll-behavior-y: contain; }
       .nasida-main > * { min-width: 0; }
       .nasida-sidebar-collapsed .nasida-two-col-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
       .nasida-sidebar-collapsed .nasida-chart-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
@@ -1062,7 +1087,13 @@ export default function App() {
         .nasida-main { padding: 20px 18px !important; min-width: 0; }
       }
       @media (max-width: 640px) {
-        .nasida-main { padding: 16px 12px !important; }
+        .nasida-shell { height: 100dvh !important; }
+        .nasida-sidebar { position: fixed; inset: 0 auto 0 0; width: min(84vw, 280px) !important; height: 100dvh; z-index: 40; padding: 22px 16px; transform: translateX(0); }
+        .nasida-sidebar-collapsed .nasida-sidebar { width: min(84vw, 280px) !important; padding: 22px 16px; transform: translateX(-100%); }
+        .nasida-main { width: 100%; height: 100dvh; padding: 58px 12px 16px !important; }
+        .nasida-mobile-menu { position: fixed; z-index: 35; top: 12px; left: 12px; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid #dfe6e1; border-radius: 8px; background: #fff; color: #153C20; box-shadow: 0 2px 8px rgba(21,60,32,.12); }
+        .nasida-mobile-backdrop { position: fixed; inset: 0; z-index: 39; display: block; border: 0; padding: 0; background: rgba(10,24,13,.48); }
+        .nasida-main .nasida-page-header { flex-direction: column; align-items: stretch; }
         .nasida-main h1 { font-size: 19px !important; }
         .nasida-main [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
         .nasida-main [style*="minmax(400px"] { grid-template-columns: 1fr !important; }
@@ -1141,6 +1172,9 @@ export default function App() {
       return next;
     });
   }
+  function closeMobileSidebar() {
+    if (window.innerWidth <= 640 && !sidebarCollapsed) toggleSidebar();
+  }
 
   return (
     <div className={`nasida-shell ${sidebarCollapsed ? "nasida-sidebar-collapsed" : ""}`} style={styles.shell}>
@@ -1153,52 +1187,55 @@ export default function App() {
         transition={{ type: "spring", stiffness: 360, damping: 32, mass: 0.8 }}
       >
         <button className="nasida-sidebar-toggle" type="button" onClick={toggleSidebar} aria-label={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"} title={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.span
-              key={sidebarCollapsed ? "expand" : "collapse"}
-              initial={{ opacity: 0, rotate: -30, scale: 0.8 }}
-              animate={{ opacity: 1, rotate: 0, scale: 1 }}
-              exit={{ opacity: 0, rotate: 30, scale: 0.8 }}
-              transition={{ duration: 0.16 }}
-              style={{ display: "inline-flex" }}
-            >
-              {sidebarCollapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
-            </motion.span>
-          </AnimatePresence>
+          <Menu size={20} strokeWidth={2.2} />
         </button>
-        <motion.div
-          className="nasida-brand-mark-wrap"
-          layout
-          title="NASIDA dashboard"
-          aria-label="NASIDA dashboard"
-          role="img"
-          style={{ display: "flex", justifyContent: "center", marginBottom: 8 }}
-        >
-          <BrandMark size={sidebarCollapsed ? 32 : 66} />
-        </motion.div>
-        <div className="nasida-sidebar-brand-text" style={styles.sidebarBrandText}>
-          <div style={styles.brandTitle}>NASIDA</div>
-          <div style={styles.brandSub}>Performance &amp; Investment Register</div>
+        <div className="nasida-sidebar-brand">
+          <motion.div
+            className="nasida-brand-mark-wrap"
+            layout
+            title="NASIDA dashboard"
+            aria-label="NASIDA dashboard"
+            role="img"
+            style={{ display: "flex", justifyContent: "center", marginBottom: 8 }}
+          >
+            <BrandMark size={sidebarCollapsed ? 32 : 66} />
+          </motion.div>
+          <div className="nasida-sidebar-brand-text" style={styles.sidebarBrandText}>
+            <div style={styles.brandTitle}>NASIDA</div>
+            <div style={styles.brandSub}>Performance &amp; Investment Register</div>
+          </div>
         </div>
 
         <div className="nasida-nav-label" style={styles.navLabel}>NAVIGATION</div>
         <nav className="nasida-nav" style={styles.nav}>
           {navItems.map(([key, label, Icon]) => (
-            <button
-              key={key}
-              className={`nasida-nav-item ${tab === key ? "nasida-nav-active" : ""}`}
-              title={sidebarCollapsed ? label : undefined}
-              onClick={() => setTab(key)}
-              style={{ ...styles.navItem, ...(tab === key ? styles.navItemActive : {}) }}
-            >
-              <Icon size={16} strokeWidth={2.2} />
-              <span className="nasida-nav-text">{label}</span>
-            </button>
+            <React.Fragment key={key}>
+              <button
+                className={`nasida-nav-item ${tab === key ? "nasida-nav-active" : ""}`}
+                title={sidebarCollapsed ? label : undefined}
+                onClick={() => { setTab(key); if (key === "investments") setInvestmentView("all"); closeMobileSidebar(); }}
+                style={{ ...styles.navItem, ...(tab === key ? styles.navItemActive : {}) }}
+              >
+                <Icon size={16} strokeWidth={2.2} />
+                <span className="nasida-nav-text">{label}</span>
+              </button>
+              {key === "investments" && tab === "investments" && (
+                <button
+                  className={`nasida-nav-item ${investmentView === "quarterly" ? "nasida-nav-active" : ""}`}
+                  title={sidebarCollapsed ? "Quarter by year" : undefined}
+                  onClick={() => { setInvestmentView("quarterly"); closeMobileSidebar(); }}
+                  style={{ ...styles.navItem, paddingLeft: sidebarCollapsed ? 10 : 34, marginLeft: sidebarCollapsed ? 0 : 8, width: sidebarCollapsed ? "100%" : "calc(100% - 8px)", ...(investmentView === "quarterly" ? styles.navItemActive : {}) }}
+                >
+                  <CalendarDays size={16} strokeWidth={2.2} />
+                  <span className="nasida-nav-text">Quarter by year</span>
+                </button>
+              )}
+            </React.Fragment>
           ))}
         </nav>
 
         <div className="nasida-nav-label" style={styles.navLabel}>INFORMATION</div>
-        <button className="nasida-nav-item" style={styles.navItem} onClick={() => setShowInfo(true)} title={sidebarCollapsed ? "About this preview" : undefined}>
+        <button className="nasida-nav-item" style={styles.navItem} onClick={() => { setShowInfo(true); closeMobileSidebar(); }} title={sidebarCollapsed ? "About this preview" : undefined}>
           <Info size={16} strokeWidth={2.2} /><span className="nasida-nav-text">About this preview</span>
         </button>
 
@@ -1213,11 +1250,20 @@ export default function App() {
               <RefreshCw size={12} />
             </button>
           </div>
-          <div style={styles.userLine}>{user.name}</div>
-          <div style={styles.userRole}>{user.role === "admin" ? "Admin" : `${user.department} staff`}</div>
-          <button className="nasida-btn" style={styles.switchBtn} onClick={handleLogout}>Sign out</button>
+          <div className="nasida-user-block">
+            <div className="nasida-user-avatar" aria-hidden="true">
+              {String(user.name || "").split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join("").toUpperCase()}
+            </div>
+            <div className="nasida-user-details">
+              <div style={styles.userLine}>{user.name}</div>
+              <div style={styles.userRole}>{user.role === "admin" ? "Admin" : `${user.department} staff`}</div>
+            </div>
+          </div>
+          <button className="nasida-btn nasida-signout" style={styles.switchBtn} onClick={handleLogout}>Sign out</button>
         </div>
       </motion.aside>
+
+      {!sidebarCollapsed && <button className="nasida-mobile-backdrop" type="button" aria-label="Close navigation" onClick={toggleSidebar} />}
 
       <motion.main
         className="nasida-main"
@@ -1225,6 +1271,7 @@ export default function App() {
         layout
         transition={{ layout: { type: "spring", stiffness: 360, damping: 32, mass: 0.8 } }}
       >
+        {sidebarCollapsed && <button className="nasida-mobile-menu" type="button" aria-label="Open navigation" onClick={toggleSidebar}><Menu size={19} /></button>}
         {showInfo && (
           <div style={styles.modalOverlay} onClick={() => setShowInfo(false)}>
             <div className="nasida-fade nasida-modal-card" style={styles.modalCard} onClick={(e) => e.stopPropagation()}>
@@ -1239,9 +1286,9 @@ export default function App() {
 
         {tab === "overview" && (
           <section key="overview" className="nasida-fade">
-            <div style={styles.pageHeader}>
+            <div className="nasida-page-header" style={styles.pageHeader}>
               <div>
-                <h1 style={styles.h1}>Investment Overview</h1>
+                <h1 style={{ ...styles.h1, fontWeight: 800 }}>INVESTMENT OVERVIEW</h1>
                 <p style={styles.pageSub}>Department appraisals &amp; investment Tracker &bull; 2026</p>
               </div>
               <div style={{ display: "flex", gap: 8 }}>
@@ -1357,14 +1404,14 @@ export default function App() {
                     <XAxis dataKey="lga" tick={{ fontSize: 10 }} interval={0} angle={-18} textAnchor="end" height={48} />
                     <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => fmtM(v)} />
                     <Tooltip formatter={(v) => fmt(v)} />
-                    <Bar dataKey="total" fill="#1f7a4d" radius={[6, 6, 0, 0]} />
+                    <Bar dataKey="total" fill="#42AD4E" radius={[6, 6, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
             </div>
 
             {/* Row: quarterly trend + sector donut */}
-            <div className="nasida-two-col-grid" style={styles.twoColGrid}>
+            <div className="nasida-two-col-grid" style={{ ...styles.twoColGrid, gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
               <div className="nasida-card" style={styles.panel}>
                 <div style={styles.panelHeader}>
                   <div>
@@ -1390,7 +1437,7 @@ export default function App() {
                       tickFormatter={(v) => (trendMetric === "amount" ? fmtM(v) : v)}
                     />
                     <Tooltip formatter={(v) => (trendMetric === "amount" ? fmt(v) : v)} />
-                    <Line type="monotone" dataKey={trendMetric} stroke="#0b3d2e" strokeWidth={2.5} dot={{ r: 4, fill: "#0b3d2e" }} activeDot={{ r: 6 }} animationDuration={700} />
+                    <Line type="monotone" dataKey={trendMetric} stroke="#153C20" strokeWidth={2.5} dot={{ r: 4, fill: "#153C20" }} activeDot={{ r: 6 }} animationDuration={700} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -1425,6 +1472,24 @@ export default function App() {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              <div className="nasida-card" style={styles.panel}>
+                <div style={styles.panelHeader}>
+                  <div>
+                    <div style={styles.panelTitle}>Investment by source</div>
+                    <div style={styles.panelSub}>Share of committed investment value</div>
+                  </div>
+                </div>
+                <ResponsiveContainer width="100%" height={240}>
+                  <PieChart>
+                    <Pie data={investmentBySource} dataKey="total" nameKey="source" outerRadius={78} paddingAngle={3} animationDuration={700}>
+                      {investmentBySource.map((entry, index) => <Cell key={entry.source} fill={SOURCE_PALETTE[index]} />)}
+                    </Pie>
+                    <Tooltip formatter={(value) => fmt(value)} />
+                    <Legend verticalAlign="bottom" height={24} wrapperStyle={{ fontSize: 12 }} />
+                  </PieChart>
+                </ResponsiveContainer>
               </div>
             </div>
 
@@ -1521,22 +1586,43 @@ export default function App() {
 
         {tab === "investments" && (
           <section key="investments" className="nasida-fade">
-            <div style={styles.pageHeader}>
+            <div className="nasida-page-header" style={styles.pageHeader}>
               <div>
-                <h1 style={styles.h1}>Investment Records</h1>
-                <p style={styles.pageSub}>{user.role === "admin" ? "You can add, edit, and remove records." : "View only — investment data is managed by Admin."}</p>
+                <h1 style={styles.h1}>{investmentView === "quarterly" ? "Quarterly Investment Records" : "Investment Records"}</h1>
+                <p style={styles.pageSub}>{investmentView === "quarterly" ? "Review investment records by year and quarter." : user.role === "admin" ? "You can add, edit, and remove records." : "View only — investment data is managed by Admin."}</p>
               </div>
               <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-                <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => exportInvestments("csv")}>
+                <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => exportInvestments("csv", displayedInvestments)}>
                   <Download size={14} /> CSV
                 </button>
-                <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => exportInvestments("xlsx")}>
+                <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => exportInvestments("xlsx", displayedInvestments)}>
                   <Download size={14} /> Excel
                 </button>
               </div>
             </div>
 
-            {user.role === "admin" && (
+            {investmentView === "quarterly" && (
+              <div className="nasida-card" style={{ ...styles.panel, marginBottom: 16 }}>
+                <div style={{ ...styles.panelHeader, flexWrap: "wrap" }}>
+                  <div style={styles.segmentGroup} role="group" aria-label="Select quarter">
+                    {[1, 2, 3, 4].map((quarter) => (
+                      <button key={quarter} type="button" className="nasida-pill" style={{ ...styles.segmentBtn, ...(investmentQuarter === quarter ? styles.segmentBtnActive : {}) }} onClick={() => setInvestmentQuarter(quarter)}>
+                        Q{quarter}
+                      </button>
+                    ))}
+                  </div>
+                  <label style={{ ...styles.field, minWidth: 150 }}>
+                    <span style={styles.fieldLabel}>Year</span>
+                    <select style={styles.input} value={investmentYear} onChange={(event) => setInvestmentYear(event.target.value)}>
+                      {investmentYears.map((year) => <option key={year} value={year}>{year}</option>)}
+                    </select>
+                  </label>
+                </div>
+                <div style={styles.panelSub}>{quarterlyInvestments.length} record{quarterlyInvestments.length === 1 ? "" : "s"} · {fmt(quarterlyInvestments.reduce((total, investment) => total + Number(investment.amount || 0), 0))} committed value</div>
+              </div>
+            )}
+
+            {user.role === "admin" && investmentView === "all" && (
               <form className="nasida-card" style={styles.card} onSubmit={submitInvestment}>
                 <h3 style={styles.cardTitle}>{editingI ? "Edit investment" : "Log new investment"}</h3>
                 <div style={styles.formGrid}>
@@ -1572,7 +1658,7 @@ export default function App() {
               </form>
             )}
 
-            {user.role === "admin" && (
+            {user.role === "admin" && investmentView === "all" && (
               <div className="nasida-card" style={{ ...styles.card, marginTop: 16 }}>
                 <div style={styles.panelHeader}>
                   <div>
@@ -1633,7 +1719,7 @@ export default function App() {
               <table style={styles.table}>
                 <thead><tr>{["S/N", "Company/Investor", "Project Description", "Department", "Sector", "LGA", "Amount", "Source", "Status", "Jobs", "Date", user.role === "admin" ? "" : null].filter((h) => h !== null).map((h, i) => <th key={i} style={styles.th}>{h}</th>)}</tr></thead>
                 <tbody>
-                  {investments.map((r, index) => (
+                  {displayedInvestments.map((r, index) => (
                     <tr key={r.id} className="nasida-row">
                       <td style={styles.td}>{index + 1}</td>
                       <td style={styles.td}>{r.company_investor}</td>
@@ -1654,6 +1740,9 @@ export default function App() {
                       )}
                     </tr>
                   ))}
+                  {!displayedInvestments.length && (
+                    <tr><td style={styles.td} colSpan={user.role === "admin" ? 12 : 11}>No investment records for Q{investmentQuarter} {investmentYear}.</td></tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -1662,7 +1751,7 @@ export default function App() {
 
         {tab === "workforce" && (
           <section key="workforce" className="nasida-fade">
-            <div style={styles.pageHeader}>
+            <div className="nasida-page-header" style={styles.pageHeader}>
               <div>
                 <h1 style={styles.h1}>Workforce &amp; Demographics</h1>
                 <p style={styles.pageSub}>Headcount, attrition, and staff composition across all 7 departments</p>
@@ -1924,8 +2013,8 @@ export default function App() {
             <div className="nasida-card" style={styles.panel}>
               <div style={styles.panelHeader}>
                 <div>
-                  <div style={styles.panelTitle}>Investment facilitated by department</div>
-                  <div style={styles.panelSub}>Total committed value attributed to each department</div>
+                  <div style={styles.panelTitle}>Investment projects facilitated by department</div>
+                  <div style={styles.panelSub}>Committed investment value by project status</div>
                 </div>
               </div>
               <ResponsiveContainer width="100%" height={250}>
@@ -1934,7 +2023,9 @@ export default function App() {
                   <XAxis dataKey="department" tick={{ fontSize: 11 }} />
                   <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => fmtM(v)} />
                   <Tooltip formatter={(v) => fmt(v)} />
-                  <Bar dataKey="total" fill="#1f7a4d" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+                  <Legend verticalAlign="top" height={28} wrapperStyle={{ fontSize: 12 }} />
+                  <Bar dataKey="Announced" fill={INVESTMENT_STATUS_COLOR.Announced} radius={[4, 4, 0, 0]} isAnimationActive={false} />
+                  <Bar dataKey="Actualized" fill={INVESTMENT_STATUS_COLOR.Actualized} radius={[4, 4, 0, 0]} isAnimationActive={false} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -2142,9 +2233,7 @@ export default function App() {
           <section key="users" className="nasida-fade">
             <h1 style={styles.h1}>Manage Users</h1>
             <p style={styles.pageSub}>
-              New accounts are created in the Supabase Dashboard (Authentication → Add user), with{" "}
-              <code>role</code> and <code>department</code> set in that user's metadata — this list reflects
-              real accounts from your Supabase project.
+              Create accounts in Supabase Authentication, then assign each profile's department in Table Editor → profiles. Department staff can edit their own department's appraisals; investments, workforce, and custom KPIs remain admin-only.
             </p>
             <div style={styles.tableWrap}>
               <table style={styles.table}>
@@ -2179,7 +2268,7 @@ function KpiCard({ icon: Icon, label, value, subs }) {
       <div style={styles.kpiSubsRow}>
         {subs.map((s, i) => (
           <div key={i} style={{ ...styles.kpiSub, ...(i > 0 ? styles.kpiSubBorder : {}) }}>
-            <div style={{ ...styles.kpiSubValue, color: s.tone === "up" ? "#1f7a4d" : s.tone === "down" ? "#b5493f" : "#0b3d2e" }}>{s.value}</div>
+            <div style={{ ...styles.kpiSubValue, color: s.tone === "up" ? "#42AD4E" : s.tone === "down" ? "#b5493f" : "#153C20" }}>{s.value}</div>
             <div style={styles.kpiSubLabel}>{s.label}</div>
           </div>
         ))}
@@ -2208,43 +2297,43 @@ function Badge({ color, children }) {
 }
 
 const styles = {
-  loginWrap: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(160deg,#0b3d2e,#1f7a4d)", fontFamily: "'Segoe UI', system-ui, sans-serif" },
+  loginWrap: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(160deg,#153C20,#42AD4E)", fontFamily: '"Trebuchet MS", sans-serif' },
   loginCard: { background: "#f6f8f5", padding: "40px 36px", borderRadius: 14, width: 400, textAlign: "center", boxShadow: "0 20px 60px rgba(0,0,0,0.35)" },
-  loginTitle: { fontSize: 19, margin: "10px 0 6px", color: "#0b3d2e" },
+  loginTitle: { fontSize: 19, margin: "10px 0 6px", color: "#153C20" },
   loginSub: { fontSize: 13.5, color: "#5b6b62", margin: "0 0 22px" },
-  loginBtnPrimary: { width: "100%", padding: "11px", background: "#0b3d2e", color: "#fff", border: "none", borderRadius: 999, fontWeight: 600, fontSize: 14, cursor: "pointer", marginBottom: 10 },
-  loginBtnSecondary: { width: "100%", padding: "11px", background: "#fff", color: "#0b3d2e", border: "1px solid #c3cec7", borderRadius: 999, fontWeight: 600, fontSize: 14, cursor: "pointer" },
+  loginBtnPrimary: { width: "100%", padding: "11px", background: "#246B2A", color: "#fff", border: "none", borderRadius: 999, fontWeight: 600, fontSize: 14, cursor: "pointer", marginBottom: 10 },
+  loginBtnSecondary: { width: "100%", padding: "11px", background: "#fff", color: "#153C20", border: "1px solid #c3cec7", borderRadius: 999, fontWeight: 600, fontSize: 14, cursor: "pointer" },
   loginLabel: { display: "block", textAlign: "left", fontSize: 12, fontWeight: 600, color: "#354039", marginBottom: 4 },
   loginInput: { width: "100%", padding: "9px 10px", borderRadius: 6, border: "1px solid #c3cec7", fontSize: 14, marginBottom: 14, fontFamily: "inherit" },
   loginError: { background: "#fdecea", color: "#c62828", padding: "8px 10px", borderRadius: 6, fontSize: 12.5, marginBottom: 14, textAlign: "left" },
   loginNote: { fontSize: 12, color: "#8b978f", marginTop: 18, lineHeight: 1.5 },
 
-  shell: { display: "flex", minHeight: "100vh", fontFamily: "'Segoe UI', system-ui, sans-serif", background: "#f2f4f1" },
-  sidebar: { width: 240, background: "linear-gradient(180deg,#0b3d2e 0%,#1a6b4a 100%)", color: "#fff", display: "flex", flexDirection: "column", padding: "22px 16px", flexShrink: 0 },
-  sidebarBrandText: { textAlign: "center", marginBottom: 22 },
-  brandTitle: { fontSize: 15, fontWeight: 800, letterSpacing: 0.5 },
-  brandSub: { fontSize: 10.5, color: "#bfe3cd", marginTop: 2, lineHeight: 1.3, padding: "0 8px" },
-  navLabel: { fontSize: 10.5, fontWeight: 700, color: "#9cd2b3", letterSpacing: 1.2, margin: "6px 4px 8px" },
-  nav: { display: "flex", flexDirection: "column", gap: 4, marginBottom: 18 },
-  navItem: { display: "flex", alignItems: "center", gap: 10, textAlign: "left", background: "none", border: "none", color: "#cfe6d8", padding: "10px 14px", borderRadius: 999, cursor: "pointer", fontSize: 13.5 },
-  navItemActive: { background: "#fff", color: "#0b3d2e", fontWeight: 700, boxShadow: "0 3px 8px rgba(0,0,0,0.15)" },
-  sidebarFooter: { borderTop: "1px solid rgba(255,255,255,0.15)", paddingTop: 14, marginTop: "auto" },
-  currencyRow: { display: "flex", alignItems: "center", gap: 6, color: "#bfe3cd", marginBottom: 12 },
+  shell: { display: "flex", height: "100vh", overflow: "hidden", fontFamily: '"Trebuchet MS", sans-serif', background: "#F2F7EE" },
+  sidebar: { width: 240, height: "100vh", background: "linear-gradient(145deg,rgba(255,255,255,.04),transparent 38%,rgba(217,164,65,.035)),linear-gradient(165deg,#102B15 0%,#1A4821 52%,#112F18 100%)", color: "#fff", display: "flex", flexDirection: "column", padding: "22px 16px", flexShrink: 0, boxShadow: "8px 0 28px rgba(21,60,32,.18)" },
+  sidebarBrandText: { textAlign: "center", marginBottom: 0 },
+  brandTitle: { fontSize: 16, fontWeight: 800, letterSpacing: 1.4 },
+  brandSub: { fontSize: 10.5, color: "#C6E4C8", marginTop: 3, lineHeight: 1.35, padding: "0 8px" },
+  navLabel: { fontSize: 10, fontWeight: 700, color: "#B9D9BB", letterSpacing: 1.5, margin: "6px 4px 10px" },
+  nav: { display: "flex", flexDirection: "column", gap: 5, marginBottom: 18 },
+  navItem: { display: "flex", alignItems: "center", gap: 10, textAlign: "left", background: "none", border: "none", color: "#D6E7D5", padding: "10px 12px", borderRadius: 8, cursor: "pointer", fontSize: 13, fontWeight: 550 },
+  navItemActive: { background: "#ECF6E8", color: "#153C20", fontWeight: 700, boxShadow: "inset 3px 0 #42AD4E, 0 2px 8px rgba(0,0,0,.12)" },
+  sidebarFooter: { position: "sticky", bottom: 0, zIndex: 2, borderTop: "1px solid rgba(255,255,255,0.15)", paddingTop: 14, marginTop: "auto", background: "#112F18" },
+  currencyRow: { display: "flex", alignItems: "center", gap: 6, color: "#C6E4C8", marginBottom: 12 },
   currencySelect: { flex: 1, background: "rgba(255,255,255,0.12)", color: "#fff", border: "none", borderRadius: 6, padding: "5px 6px", fontSize: 12 },
   currencyRefresh: { width: 24, height: 24, borderRadius: "50%", border: "none", background: "rgba(255,255,255,0.12)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 },
   userLine: { fontSize: 13, fontWeight: 600 },
-  userRole: { fontSize: 11.5, color: "#9cd2b3", marginBottom: 10 },
-  switchBtn: { fontSize: 12, background: "rgba(255,255,255,0.14)", color: "#fff", border: "none", padding: "7px 10px", borderRadius: 999, cursor: "pointer", width: "100%" },
+  userRole: { fontSize: 11.5, color: "#A8D4A8", marginBottom: 10 },
+  switchBtn: { fontSize: 12, background: "rgba(255,255,255,.07)", color: "#f1f6f2", border: "1px solid rgba(255,255,255,.14)", padding: "8px 10px", borderRadius: 8, cursor: "pointer", width: "100%" },
 
-  main: { flex: 1, padding: "26px 32px", overflowX: "hidden", position: "relative" },
+  main: { flex: 1, minHeight: 0, height: "100vh", padding: "26px 32px", overflowX: "hidden", overflowY: "auto", overscrollBehaviorY: "contain", position: "relative" },
   pageHeader: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 18 },
-  h1: { fontSize: 21, color: "#0b3d2e", margin: "0 0 3px" },
+  h1: { fontSize: 21, color: "#153C20", margin: "0 0 3px" },
   pageSub: { fontSize: 13, color: "#7a877f", margin: "0 0 18px" },
-  iconBtn: { width: 36, height: 36, borderRadius: 999, border: "1px solid #dfe6e1", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", color: "#0b3d2e" },
+  iconBtn: { width: 36, height: 36, borderRadius: 999, border: "1px solid #dfe6e1", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", color: "#153C20" },
 
-  modalOverlay: { position: "fixed", inset: 0, background: "rgba(11,61,46,0.35)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 50 },
+  modalOverlay: { position: "fixed", inset: 0, background: "rgba(21,60,32,0.35)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 50 },
   modalCard: { background: "#fff", borderRadius: 12, padding: "20px 22px", width: 380, boxShadow: "0 24px 60px rgba(0,0,0,0.3)" },
-  modalHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10, color: "#0b3d2e" },
+  modalHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10, color: "#153C20" },
   modalText: { fontSize: 13, color: "#4a564e", lineHeight: 1.6, margin: 0 },
 
   filterBar: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14, marginBottom: 18 },
@@ -2253,32 +2342,32 @@ const styles = {
   filterRow: { display: "flex", gap: 8, flexWrap: "wrap" },
 
   kpiRow: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16, marginBottom: 18 },
-  kpiCard: { background: "#fff", borderRadius: 12, padding: "18px 20px", boxShadow: "0 1px 3px rgba(11,61,46,0.06), 0 1px 12px rgba(11,61,46,0.05)" },
+  kpiCard: { background: "#fff", borderRadius: 12, padding: "18px 20px", boxShadow: "0 1px 3px rgba(21,60,32,0.06), 0 1px 12px rgba(21,60,32,0.05)" },
   kpiTopRow: { display: "flex", alignItems: "center", gap: 8, marginBottom: 10 },
-  kpiIconCircle: { width: 28, height: 28, borderRadius: "50%", background: "#e6f2ea", color: "#0b3d2e", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 },
+  kpiIconCircle: { width: 28, height: 28, borderRadius: "50%", background: "#EAF5E8", color: "#153C20", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 },
   kpiLabel: { fontSize: 10.5, fontWeight: 700, letterSpacing: 0.6, color: "#7a877f", textTransform: "uppercase" },
-  kpiValue: { fontSize: 24, fontWeight: 800, color: "#0b3d2e", marginBottom: 12 },
+  kpiValue: { fontSize: 24, fontWeight: 800, color: "#153C20", marginBottom: 12 },
   kpiSubsRow: { display: "flex" },
   kpiSub: { flex: 1, paddingLeft: 10 },
   kpiSubBorder: { borderLeft: "1px solid #eaefe9" },
   kpiSubValue: { fontSize: 13, fontWeight: 700 },
   kpiSubLabel: { fontSize: 9, color: "#9aa79f", fontWeight: 600, letterSpacing: 0.3, marginTop: 2 },
 
-  insightsCard: { background: "#0b3d2e", borderRadius: 12, padding: "16px 20px", marginBottom: 18, color: "#fff" },
+  insightsCard: { background: "#153C20", borderRadius: 12, padding: "16px 20px", marginBottom: 18, color: "#fff" },
   insightsTitleRow: { marginBottom: 8 },
   insightsTitle: { fontSize: 12.5, fontWeight: 700, color: "#d9a441" },
   insightsList: { margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 6 },
   insightItem: { fontSize: 12.5, lineHeight: 1.5, color: "#e9f3ec" },
 
   twoColGrid: { display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 16, marginBottom: 18 },
-  panel: { background: "#fff", borderRadius: 12, padding: "18px 20px", boxShadow: "0 1px 3px rgba(11,61,46,0.06), 0 1px 12px rgba(11,61,46,0.05)" },
+  panel: { background: "#fff", borderRadius: 12, padding: "18px 20px", boxShadow: "0 1px 3px rgba(21,60,32,0.06), 0 1px 12px rgba(21,60,32,0.05)" },
   panelHeader: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10, gap: 10, flexWrap: "wrap" },
-  panelTitle: { fontSize: 14, fontWeight: 700, color: "#0b3d2e" },
+  panelTitle: { fontSize: 14, fontWeight: 700, color: "#153C20" },
   panelSub: { fontSize: 11.5, color: "#8b978f", marginTop: 2 },
 
-  segmentGroup: { display: "flex", background: "#f2f5f1", borderRadius: 999, padding: 3, gap: 2 },
+  segmentGroup: { display: "flex", background: "#F1F7EF", borderRadius: 999, padding: 3, gap: 2 },
   segmentBtn: { border: "none", background: "none", padding: "6px 12px", borderRadius: 999, fontSize: 11.5, fontWeight: 600, color: "#5b6b62" },
-  segmentBtnActive: { background: "#0b3d2e", color: "#fff" },
+  segmentBtnActive: { background: "#246B2A", color: "#fff" },
 
   compositionList: { display: "flex", flexDirection: "column", gap: 16, marginTop: 6 },
   compositionRow: { display: "flex", alignItems: "center", gap: 10 },
@@ -2288,15 +2377,15 @@ const styles = {
   compositionLabelRow: { display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 4 },
   compositionLabel: { color: "#354039", fontWeight: 600 },
   compositionCount: { color: "#7a877f" },
-  compositionTrack: { height: 7, background: "#eef2ee", borderRadius: 6, overflow: "hidden" },
+  compositionTrack: { height: 7, background: "#EEF5EB", borderRadius: 6, overflow: "hidden" },
   compositionFill: { height: "100%", borderRadius: 6 },
-  compositionPct: { fontSize: 12, fontWeight: 700, color: "#0b3d2e", width: 34, textAlign: "right" },
+  compositionPct: { fontSize: 12, fontWeight: 700, color: "#153C20", width: 34, textAlign: "right" },
 
   donutWrap: { position: "relative" },
   donutCenter: { position: "absolute", top: "42%", left: "50%", transform: "translate(-50%,-50%)", textAlign: "center" },
-  donutCenterValue: { fontSize: 17, fontWeight: 800, color: "#0b3d2e" },
+  donutCenterValue: { fontSize: 17, fontWeight: 800, color: "#153C20" },
   donutCenterLabel: { fontSize: 10, color: "#8b978f" },
-  mapWrap: { width: "100%", overflow: "hidden", borderRadius: 12, background: "linear-gradient(180deg,#f8fbf8,#edf4ef)", border: "1px solid #e4ece5" },
+  mapWrap: { width: "100%", overflow: "hidden", borderRadius: 12, background: "linear-gradient(180deg,#F7FBF4,#ECF4E9)", border: "1px solid #e4ece5" },
   mapSvg: { display: "block", width: "100%", height: 260 },
   donutLegend: { display: "flex", flexWrap: "wrap", gap: "6px 14px", marginTop: 8, justifyContent: "center" },
   donutLegendItem: { display: "flex", alignItems: "center", gap: 5, fontSize: 11 },
@@ -2304,45 +2393,45 @@ const styles = {
   donutLegendLabel: { color: "#354039" },
   donutLegendPct: { color: "#8b978f", fontWeight: 600 },
 
-  sectionLabel: { fontSize: 13, fontWeight: 700, color: "#0b3d2e", margin: "6px 0 10px" },
+  sectionLabel: { fontSize: 13, fontWeight: 700, color: "#153C20", margin: "6px 0 10px" },
   customKpiRow: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, marginBottom: 18 },
-  customKpiCard: { background: "#fff", borderRadius: 12, padding: "16px 18px", boxShadow: "0 1px 3px rgba(11,61,46,0.06), 0 1px 12px rgba(11,61,46,0.05)", borderLeft: "3px solid #d9a441" },
+  customKpiCard: { background: "#fff", borderRadius: 12, padding: "16px 18px", boxShadow: "0 1px 3px rgba(21,60,32,0.06), 0 1px 12px rgba(21,60,32,0.05)", borderLeft: "3px solid #d9a441" },
   customKpiTop: { display: "flex", alignItems: "center", gap: 8, marginBottom: 8 },
   customKpiDesc: { fontSize: 11.5, color: "#8b978f", marginTop: -6, marginBottom: 4 },
   customKpiError: { fontSize: 11, color: "#b5493f", marginTop: 4 },
   formulaHelp: { fontSize: 11.5, color: "#5b6b62", background: "#f2f5f1", padding: "10px 12px", borderRadius: 8, marginTop: 10, whiteSpace: "pre-wrap", lineHeight: 1.5 },
   formulaTestRow: { display: "flex", alignItems: "center", gap: 12, marginTop: 12, flexWrap: "wrap" },
   formulaError: { color: "#b5493f", fontSize: 12.5, fontWeight: 600 },
-  formulaSuccess: { color: "#1f7a4d", fontSize: 12.5, fontWeight: 700 },
+  formulaSuccess: { color: "#287B32", fontSize: 12.5, fontWeight: 700 },
   tripleGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14, marginBottom: 18 },
   chartGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: 16 },
-  chartBox: { background: "#fff", borderRadius: 12, boxShadow: "0 1px 3px rgba(11,61,46,0.06), 0 1px 12px rgba(11,61,46,0.05)", padding: "16px 18px" },
-  chartTitle: { fontSize: 13, fontWeight: 700, color: "#0b3d2e", marginBottom: 8 },
+  chartBox: { background: "#fff", borderRadius: 12, boxShadow: "0 1px 3px rgba(21,60,32,0.06), 0 1px 12px rgba(21,60,32,0.05)", padding: "16px 18px" },
+  chartTitle: { fontSize: 13, fontWeight: 700, color: "#153C20", marginBottom: 8 },
 
   filters: { display: "flex", gap: 10, marginBottom: 16 },
   select: { padding: "8px 10px", borderRadius: 8, border: "1px solid #c3cec7", fontSize: 13 },
 
-  card: { background: "#fff", borderRadius: 12, boxShadow: "0 1px 3px rgba(11,61,46,0.06), 0 1px 12px rgba(11,61,46,0.05)", padding: "18px 20px", marginBottom: 22 },
-  cardTitle: { fontSize: 14.5, fontWeight: 700, color: "#0b3d2e", margin: "0 0 12px" },
+  card: { background: "#fff", borderRadius: 12, boxShadow: "0 1px 3px rgba(21,60,32,0.06), 0 1px 12px rgba(21,60,32,0.05)", padding: "18px 20px", marginBottom: 22 },
+  cardTitle: { fontSize: 14.5, fontWeight: 700, color: "#153C20", margin: "0 0 12px" },
   formGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 },
   field: { display: "flex", flexDirection: "column", gap: 4, fontSize: 12.5, fontWeight: 600, color: "#354039" },
   fieldLabel: { marginBottom: 2 },
   input: { padding: "8px 9px", borderRadius: 8, border: "1px solid #c3cec7", fontWeight: 400, fontSize: 13, fontFamily: "inherit" },
   textarea: { padding: "8px 9px", borderRadius: 8, border: "1px solid #c3cec7", fontWeight: 400, fontSize: 13, minHeight: 56, fontFamily: "inherit", resize: "vertical" },
   formActions: { display: "flex", gap: 10, marginTop: 14 },
-  btnPrimary: { display: "inline-flex", alignItems: "center", gap: 6, background: "#0b3d2e", color: "#fff", border: "none", padding: "9px 18px", borderRadius: 999, fontWeight: 600, fontSize: 13, cursor: "pointer" },
-  btnGhost: { display: "inline-flex", alignItems: "center", gap: 6, background: "#eaefe9", color: "#354039", border: "none", padding: "9px 18px", borderRadius: 999, fontWeight: 600, fontSize: 13, cursor: "pointer" },
+  btnPrimary: { display: "inline-flex", alignItems: "center", gap: 6, background: "#246B2A", color: "#fff", border: "none", padding: "9px 18px", borderRadius: 999, fontWeight: 600, fontSize: 13, cursor: "pointer" },
+  btnGhost: { display: "inline-flex", alignItems: "center", gap: 6, background: "#EEF4EA", color: "#354039", border: "none", padding: "9px 18px", borderRadius: 999, fontWeight: 600, fontSize: 13, cursor: "pointer" },
   importFileName: { fontSize: 12.5, color: "#5b6b62", marginBottom: 12 },
   importMappingGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12, marginBottom: 14 },
   importPreviewWrap: { marginBottom: 14 },
   importError: { background: "#fdecea", color: "#b5493f", borderRadius: 8, padding: "9px 11px", fontSize: 12.5, lineHeight: 1.45, marginBottom: 12 },
 
-  tableWrap: { background: "#fff", borderRadius: 12, boxShadow: "0 1px 3px rgba(11,61,46,0.06), 0 1px 12px rgba(11,61,46,0.05)", overflowX: "auto" },
+  tableWrap: { background: "#fff", borderRadius: 12, boxShadow: "0 1px 3px rgba(21,60,32,0.06), 0 1px 12px rgba(21,60,32,0.05)", overflowX: "auto" },
   table: { width: "100%", borderCollapse: "collapse", fontSize: 12.5 },
   th: { textAlign: "left", padding: "10px 12px", background: "#f2f5f1", color: "#4a564e", fontWeight: 700, borderBottom: "1px solid #dfe6e1", whiteSpace: "nowrap" },
   td: { padding: "9px 12px", borderBottom: "1px solid #eaefe9", color: "#354039", verticalAlign: "top" },
   movList: { display: "flex", flexDirection: "column", gap: 5 },
-  movLink: { color: "#0b3d2e", fontWeight: 700, textDecoration: "underline", wordBreak: "break-word" },
+  movLink: { color: "#246B2A", fontWeight: 700, textDecoration: "underline", wordBreak: "break-word" },
   mutedText: { color: "#7a877f" },
   smallBtn: { display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 11.5, background: "#eaefe9", border: "none", padding: "5px 7px", borderRadius: 6, cursor: "pointer", marginRight: 6, color: "#354039" },
   badge: { color: "#fff", padding: "3px 9px", borderRadius: 12, fontSize: 11, fontWeight: 700, whiteSpace: "nowrap" },

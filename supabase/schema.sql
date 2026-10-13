@@ -54,18 +54,16 @@ select using (
     or id = auth.uid()
   );
 drop policy if exists "Users can update their own profile" on profiles;
-create policy "Users can update their own profile" on profiles for
-update using (auth.uid() = id);
--- Auto-create a profile row whenever a new user signs up.
--- Pass role/department/name in the signup call's `options.data`, e.g.:
---   supabase.auth.signUp({ email, password, options: { data: { name, role, department } } })
+-- Profile role and department are admin-managed; users cannot promote themselves
+-- or move their account into another department through the public API.
+-- Auto-create an unprivileged profile whenever a new auth user signs up.
 create or replace function handle_new_user() returns trigger as $$ begin
 insert into public.profiles (id, name, role, department)
 values (
     new.id,
     coalesce(new.raw_user_meta_data->>'name', new.email),
-    coalesce(new.raw_user_meta_data->>'role', 'staff'),
-    nullif(new.raw_user_meta_data->>'department', '')
+  'staff',
+  null
   );
 return new;
 end;

@@ -44,6 +44,7 @@ To create the first administrator, create the auth user as above, then set that 
 ## 3. Get your project's API keys
 
 In your Supabase project: **Settings → API**. You need two values:
+
 - **Project URL**
 - **anon / public key** (NOT the `service_role` key — that one must never go in a
   frontend app, since it bypasses Row Level Security entirely)
@@ -63,8 +64,11 @@ account you created in step 2.
 
 ## 5. How data flows
 
+- **Appraisal periods** are selected using separate year and quarter dropdowns, then
+  saved in the existing `Q1 2026` text format.
+- **Record lists** show five records per page with Previous and Next navigation.
 - **Amounts** in `investments` are stored in USD; the currency switcher in the app
-  only converts for *display* — the underlying value in the database never changes.
+  only converts for _display_ — the underlying value in the database never changes.
 - **Realtime**: every add/edit/delete to appraisals, investments, employees, or
   custom KPIs is pushed live to every other open tab/browser via Supabase's realtime
   subscriptions — no manual refresh needed, and no polling.
@@ -76,6 +80,7 @@ account you created in step 2.
 ## 6. Deploying it for real use
 
 Push this project to GitHub, then deploy the frontend on **Vercel** or **Netlify**:
+
 - Build command: `npm run build`
 - Output directory: `dist`
 - Environment variables: add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the

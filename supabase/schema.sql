@@ -62,8 +62,8 @@ insert into public.profiles (id, name, role, department)
 values (
     new.id,
     coalesce(new.raw_user_meta_data->>'name', new.email),
-  'staff',
-  null
+    'staff',
+    null
   );
 return new;
 end;

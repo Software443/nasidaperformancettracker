@@ -10,7 +10,7 @@ import {
   LayoutDashboard, ClipboardList, TrendingUp, Users as UsersIcon, Info, Filter,
   RefreshCw, DollarSign, Briefcase, CheckCircle2, Clock, AlertTriangle, Circle,
   Plus, Pencil, Trash2, X, ArrowLeftRight, Calculator, FlaskConical, Download,
-  Building2, UserMinus, Scale, Layers, Upload, CalendarDays, Menu,
+  Building2, UserMinus, Scale, Layers, Upload, CalendarDays, Menu, Sparkles, Search,
 } from "lucide-react";
 
 const LOGO_SRC = "data:image/png;base64,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";
@@ -241,6 +241,14 @@ const KPI_FORMAT = {
 };
 
 const DEPT_TARGETS = { IPF: 4, PPP: 3, EODB: 4, "S&I": 3, ACCOUNT: 3, COMMS: 3, ADMIN: 3 };
+const RECORDS_PER_PAGE = 5;
+
+function getPageData(records, requestedPage) {
+  const pageCount = Math.max(1, Math.ceil(records.length / RECORDS_PER_PAGE));
+  const page = Math.min(requestedPage, pageCount);
+  const start = (page - 1) * RECORDS_PER_PAGE;
+  return { page, pageCount, rows: records.slice(start, start + RECORDS_PER_PAGE) };
+}
 
 // NOTE: the arrays below are no longer used to seed app state -- the app now loads
 // real data from Supabase on login. Left here only as a reference for each record's
@@ -285,7 +293,7 @@ const DESIGNATION_JOB_CATEGORY = {
   "Senior Portfolio Manager": "Fulltime", "Senior Analyst": "Fulltime", "Analyst": "Contract",
   "Intern": "Pool", "NYSC": "NYSC", "IT Student": "IT",
 };
-const GENDER_COLOR = { Male: "#153C20", Female: "#9AD7A0" };
+const GENDER_COLOR = { Male: "#246B2A", Female: "#9AD7A0" };
 
 const FIRST_NAMES_M = ["Emeka", "Musa", "Tunde", "Chidi", "Ibrahim", "Segun", "Yusuf", "Kelechi", "Aliyu", "Femi", "Obinna", "Bello"];
 const FIRST_NAMES_F = ["Amina", "Ngozi", "Fatima", "Chiamaka", "Halima", "Bukola", "Grace", "Zainab", "Adaeze", "Hauwa", "Funke", "Blessing"];
@@ -528,7 +536,16 @@ export default function App() {
   const [trendMetric, setTrendMetric] = useState("amount");
 
   const [editingA, setEditingA] = useState(null);
+  const [showAppraisalForm, setShowAppraisalForm] = useState(false);
+  const [appraisalSearch, setAppraisalSearch] = useState("");
+  const [appraisalPage, setAppraisalPage] = useState(1);
   const [editingI, setEditingI] = useState(null);
+  const [showInvestmentForm, setShowInvestmentForm] = useState(false);
+  const [investmentSearch, setInvestmentSearch] = useState("");
+  const [investmentPage, setInvestmentPage] = useState(1);
+  const [workforcePage, setWorkforcePage] = useState(1);
+  const [profilePage, setProfilePage] = useState(1);
+  const [customKpiPage, setCustomKpiPage] = useState(1);
   const [importFile, setImportFile] = useState(null);
   const [importHeaders, setImportHeaders] = useState([]);
   const [importRows, setImportRows] = useState([]);
@@ -596,6 +613,7 @@ export default function App() {
     (!wfStatus || employee.status === wfStatus) &&
     (!wfJobCategory || employee.job_category === wfJobCategory)
   ), [employees, wfStatus, wfJobCategory]);
+  const workforcePagination = getPageData(filteredEmployees, workforcePage);
 
   const workforceSummary = useMemo(() => {
     // Everything below is scoped to the current gender filter, so both the charts
@@ -657,6 +675,14 @@ export default function App() {
     return date.slice(0, 4) === investmentYear && month >= 1 && month <= 12 && Math.ceil(month / 3) === investmentQuarter;
   }), [investments, investmentYear, investmentQuarter]);
   const displayedInvestments = investmentView === "quarterly" ? quarterlyInvestments : investments;
+  const visibleInvestments = useMemo(() => {
+    const query = investmentSearch.trim().toLowerCase();
+    if (!query) return displayedInvestments;
+    return displayedInvestments.filter((investment) => [
+      investment.company_investor, investment.project_description, investment.department,
+      investment.sector, investment.lga, investment.source, investment.status, investment.date_recorded,
+    ].some((value) => String(value || "").toLowerCase().includes(query)));
+  }, [displayedInvestments, investmentSearch]);
   const [customKpis, setCustomKpis] = useState([]);
   const [allProfiles, setAllProfiles] = useState([]);
   const [kpiForm, setKpiForm] = useState({ name: "", description: "", dataset: "investments", formula: "", format: "number" });
@@ -723,6 +749,8 @@ export default function App() {
 
   const [formA, setFormA] = useState(emptyAppraisal());
   const [formI, setFormI] = useState(emptyInvestment());
+  const [appraisalPeriodYear, setAppraisalPeriodYear] = useState("");
+  const [appraisalPeriodQuarter, setAppraisalPeriodQuarter] = useState("");
 
   function canEditDept(dept) { return user?.role === "admin" || user?.department === dept; }
 
@@ -813,12 +841,34 @@ export default function App() {
     setWfSpinning(true);
     setOvDept(""); setOvStatus("");
     setWfStatus(""); setWfJobCategory("");
+    setWorkforcePage(1);
     setTimeout(() => setWfSpinning(false), 500);
   }
 
   const filteredAppraisals = useMemo(() => {
     return appraisals.filter((r) => (!deptFilter || r.department === deptFilter) && (!statusFilter || normalizeAppraisalStatus(r.status) === statusFilter));
   }, [appraisals, deptFilter, statusFilter]);
+  const appraisalYears = useMemo(() => {
+    const currentYear = new Date().getFullYear();
+    const years = Array.from({ length: 11 }, (_, index) => String(currentYear - 5 + index));
+    appraisals.forEach((appraisal) => {
+      const year = String(appraisal.period || "").match(/\b\d{4}\b/)?.[0];
+      if (year) years.push(year);
+    });
+    return [...new Set(years)].sort((a, b) => Number(b) - Number(a));
+  }, [appraisals]);
+  const visibleAppraisals = useMemo(() => {
+    const query = appraisalSearch.trim().toLowerCase();
+    if (!query) return filteredAppraisals;
+    return filteredAppraisals.filter((appraisal) => [
+      appraisal.department, appraisal.period, appraisal.activity, appraisal.objective,
+      appraisal.indicator, appraisal.outcome, normalizeAppraisalStatus(appraisal.status), appraisal.mov, appraisal.comments,
+    ].some((value) => String(value || "").toLowerCase().includes(query)));
+  }, [filteredAppraisals, appraisalSearch]);
+  const appraisalPagination = getPageData(visibleAppraisals, appraisalPage);
+  const investmentPagination = getPageData(visibleInvestments, investmentPage);
+  const profilePagination = getPageData(allProfiles, profilePage);
+  const customKpiPagination = getPageData(customKpis, customKpiPage);
 
   const ovAppraisals = useMemo(() => {
     return appraisals.filter((r) => (!ovDept || r.department === ovDept) && (!ovStatus || normalizeAppraisalStatus(r.status) === ovStatus));
@@ -930,7 +980,19 @@ export default function App() {
       const { data, error } = await supabase.from("appraisals").insert({ ...formA, status: normalizeAppraisalStatus(formA.status), created_by: user.id }).select().single();
       if (!error && data) setAppraisals([...appraisals, { ...data, status: normalizeAppraisalStatus(data.status) }]);
     }
-    setEditingA(null); setFormA(emptyAppraisal());
+    setEditingA(null); setFormA(emptyAppraisal()); setAppraisalPeriodYear(""); setAppraisalPeriodQuarter(""); setShowAppraisalForm(false);
+  }
+  function loadAppraisalPeriod(period) {
+    const parts = (period || "").match(/^(Q[1-4])\s+(\d{4})$/) || [];
+    setAppraisalPeriodQuarter(parts[1] || "");
+    setAppraisalPeriodYear(parts[2] || "");
+  }
+  function updateAppraisalPeriod(part, value) {
+    const year = part === "year" ? value : appraisalPeriodYear;
+    const quarter = part === "quarter" ? value : appraisalPeriodQuarter;
+    setAppraisalPeriodYear(year);
+    setAppraisalPeriodQuarter(quarter);
+    setFormA((current) => ({ ...current, period: quarter && year ? `${quarter} ${year}` : "" }));
   }
   async function deleteAppraisal(id) {
     if (!confirm("Delete this record?")) return;
@@ -946,7 +1008,7 @@ export default function App() {
       const { data, error } = await supabase.from("investments").insert({ ...formI, created_by: user.id }).select().single();
       if (!error && data) setInvestments([data, ...investments]);
     }
-    setEditingI(null); setFormI(emptyInvestment());
+    setEditingI(null); setFormI(emptyInvestment()); setShowInvestmentForm(false);
   }
   function resetInvestmentImport() {
     setImportFile(null);
@@ -1048,11 +1110,38 @@ export default function App() {
       .nasida-user-avatar { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; flex: 0 0 32px; border-radius: 9px; background: #d9a441; color: #173F21; font-size: 11px; font-weight: 800; }
       .nasida-user-details { min-width: 0; }
       .nasida-user-details > div:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .nasida-overview-eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; color: #527455; font-size: 10px; font-weight: 800; letter-spacing: 1.4px; }
+      .nasida-overview-eyebrow::before { content: ""; width: 18px; height: 2px; background: #42AD4E; }
+      .nasida-period-tag { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 0 11px; border: 1px solid #dce8d8; border-radius: 8px; background: #fff; color: #426347; font-size: 12px; font-weight: 700; }
+      .nasida-kpi-card { min-width: 0; overflow: hidden; border: 1px solid #DCE9DA; border-top: 3px solid #42AD4E; border-radius: 10px; background: #fff; box-shadow: 0 4px 14px rgba(21,60,32,.08); }
+      .nasida-kpi-card .nasida-kpi-label { color: #527455; }
+      .nasida-kpi-card .nasida-kpi-icon { color: #246B2A; background: #EAF5E8; }
+      .nasida-kpi-card .nasida-kpi-sub-label { color: #7a877f; }
+      .nasida-kpi-card .nasida-kpi-sub { border-color: #e6eee3; }
+      .nasida-insights-card { border: 1px solid #dce9d7; border-left: 4px solid #42AD4E; border-radius: 10px; background: linear-gradient(100deg,#F1F8EE,#fff 76%); }
+      .nasida-insights-meta { color: #718674; font-size: 11px; }
       .nasida-progress-fill { transition: width 1.1s cubic-bezier(.22,.9,.32,1); }
       .nasida-btn { transition: transform .12s ease, box-shadow .12s ease, background .15s ease; }
       .nasida-btn:hover { transform: translateY(-1px); }
       .nasida-row { transition: background .15s ease; }
       .nasida-row:hover { background: #F3F8F0; }
+      .nasida-register-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 18px 0 10px; }
+      .nasida-workforce-chart-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; margin-bottom: 20px; }
+      .nasida-register-meta { color: #66776a; font-size: 12px; font-weight: 700; }
+      .nasida-register-search { display: flex; align-items: center; gap: 8px; width: min(100%, 320px); min-height: 38px; padding: 0 11px; border: 1px solid #d9e4d6; border-radius: 8px; background: #fff; color: #527455; }
+      .nasida-register-search input { width: 100%; min-width: 0; padding: 0; border: 0; outline: 0; background: transparent; color: #354039; font-size: 12.5px; }
+      .nasida-investment-table { border: 1px solid #dfe8dc; border-radius: 10px; }
+      .nasida-investment-table table { min-width: 1040px; }
+      .nasida-investment-table th { position: sticky; top: 0; z-index: 1; background: #246B2A !important; color: #fff !important; font-size: 10px !important; letter-spacing: .45px; text-transform: uppercase; }
+      .nasida-investment-table td { vertical-align: middle !important; border-bottom-color: #eef2eb; }
+      .nasida-investment-table tbody tr:nth-child(even) { background: #fafcf9; }
+      .nasida-investment-table td:nth-child(7), .nasida-investment-table td:nth-child(10) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+      .nasida-appraisal-table { border: 1px solid #dfe8dc; border-radius: 10px; }
+      .nasida-appraisal-table table { min-width: 1160px; }
+      .nasida-appraisal-table th { position: sticky; top: 0; z-index: 1; background: #246B2A !important; color: #fff !important; font-size: 10px !important; letter-spacing: .45px; text-transform: uppercase; }
+      .nasida-appraisal-table td { vertical-align: middle !important; border-bottom-color: #eef2eb; }
+      .nasida-appraisal-table tbody tr:nth-child(even) { background: #fafcf9; }
+      .nasida-appraisal-table td:nth-child(1), .nasida-appraisal-table td:nth-child(2), .nasida-appraisal-table td:nth-child(3), .nasida-appraisal-table td:nth-child(6) { white-space: nowrap; }
       .nasida-icon-btn { transition: background .15s ease, transform .15s ease; cursor: pointer; }
       .nasida-icon-btn:hover { background: #EFF6EC; }
       .nasida-spin { animation: nasidaSpin 0.5s linear; }
@@ -1102,6 +1191,9 @@ export default function App() {
         .nasida-main .nasida-card, .nasida-main .nasida-panel, .nasida-main .nasida-chart-box { padding: 14px !important; }
         .nasida-main .nasida-filters { flex-direction: column; }
         .nasida-main .nasida-filters > * { width: 100%; }
+        .nasida-register-toolbar { align-items: stretch; }
+        .nasida-register-search { width: 100%; }
+        .nasida-workforce-chart-row { grid-template-columns: minmax(0, 1fr); gap: 16px; }
         .nasida-modal-card { width: calc(100vw - 24px) !important; max-height: calc(100vh - 24px); overflow-y: auto; }
         .nasida-login-card { width: calc(100vw - 28px) !important; padding: 28px 22px !important; }
       }
@@ -1213,7 +1305,7 @@ export default function App() {
               <button
                 className={`nasida-nav-item ${tab === key ? "nasida-nav-active" : ""}`}
                 title={sidebarCollapsed ? label : undefined}
-                onClick={() => { setTab(key); if (key === "investments") setInvestmentView("all"); closeMobileSidebar(); }}
+                onClick={() => { setTab(key); if (key === "investments") { setInvestmentView("all"); setInvestmentPage(1); } closeMobileSidebar(); }}
                 style={{ ...styles.navItem, ...(tab === key ? styles.navItemActive : {}) }}
               >
                 <Icon size={16} strokeWidth={2.2} />
@@ -1223,7 +1315,7 @@ export default function App() {
                 <button
                   className={`nasida-nav-item ${investmentView === "quarterly" ? "nasida-nav-active" : ""}`}
                   title={sidebarCollapsed ? "Quarter by year" : undefined}
-                  onClick={() => { setInvestmentView("quarterly"); closeMobileSidebar(); }}
+                  onClick={() => { setInvestmentView("quarterly"); setInvestmentPage(1); closeMobileSidebar(); }}
                   style={{ ...styles.navItem, paddingLeft: sidebarCollapsed ? 10 : 34, marginLeft: sidebarCollapsed ? 0 : 8, width: sidebarCollapsed ? "100%" : "calc(100% - 8px)", ...(investmentView === "quarterly" ? styles.navItemActive : {}) }}
                 >
                   <CalendarDays size={16} strokeWidth={2.2} />
@@ -1288,10 +1380,12 @@ export default function App() {
           <section key="overview" className="nasida-fade">
             <div className="nasida-page-header" style={styles.pageHeader}>
               <div>
+                <div className="nasida-overview-eyebrow">NASIDA / INVESTMENT INTELLIGENCE</div>
                 <h1 style={{ ...styles.h1, fontWeight: 800 }}>INVESTMENT OVERVIEW</h1>
-                <p style={styles.pageSub}>Department appraisals &amp; investment Tracker &bull; 2026</p>
+                <p style={styles.pageSub}>Portfolio performance and project pipeline &bull; FY 2026</p>
               </div>
-              <div style={{ display: "flex", gap: 8 }}>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                <div className="nasida-period-tag"><CalendarDays size={14} /> FY 2026</div>
                 <button className="nasida-icon-btn" style={styles.iconBtn} title="Filters" onClick={() => setShowFilters((s) => !s)}>
                   <Filter size={17} />
                 </button>
@@ -1382,8 +1476,14 @@ export default function App() {
             )}
 
             {/* Insights strip */}
-            <div className="nasida-card" style={styles.insightsCard}>
-              <div style={styles.insightsTitleRow}><span style={styles.insightsTitle}>Insights &amp; recommendations</span></div>
+            <div className="nasida-card nasida-insights-card" style={styles.insightsCard}>
+              <div style={styles.insightsTitleRow}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <Sparkles size={15} color="#287B32" />
+                  <span style={styles.insightsTitle}>INSIGHTS &amp; RECOMMENDATIONS</span>
+                </div>
+                <span className="nasida-insights-meta">{insights.length} portfolio signals</span>
+              </div>
               <ul style={styles.insightsList}>
                 {insights.map((line, i) => <li key={i} style={styles.insightItem}>{line}</li>)}
               </ul>
@@ -1498,21 +1598,31 @@ export default function App() {
 
         {tab === "appraisals" && (
           <section key="appraisals" className="nasida-fade">
-            <h1 style={styles.h1}>Department Appraisals</h1>
-            <p style={styles.pageSub}>{user.role === "admin" ? "Viewing and editing across all departments." : `You can edit ${user.department} records only.`}</p>
+            <div className="nasida-page-header" style={styles.pageHeader}>
+              <div>
+                <h1 style={styles.h1}>Department Appraisals</h1>
+                <p style={styles.pageSub}>{user.role === "admin" ? "Viewing and editing across all departments." : `You can edit ${user.department} records only.`}</p>
+              </div>
+              <button type="button" className="nasida-btn" style={styles.btnPrimary} onClick={() => {
+                if (showAppraisalForm) { setEditingA(null); setFormA(emptyAppraisal()); setAppraisalPeriodYear(""); setAppraisalPeriodQuarter(""); }
+                setShowAppraisalForm((showing) => !showing);
+              }}>
+                {showAppraisalForm ? <><X size={14} /> Close form</> : <><Plus size={14} /> Add activity</>}
+              </button>
+            </div>
 
             <div style={styles.filters}>
-              <select style={styles.select} value={deptFilter} onChange={(e) => setDeptFilter(e.target.value)}>
+              <select style={styles.select} value={deptFilter} onChange={(e) => { setDeptFilter(e.target.value); setAppraisalPage(1); }}>
                 <option value="">All departments</option>
                 {DEPARTMENTS.map((d) => <option key={d} value={d}>{d}</option>)}
               </select>
-              <select style={styles.select} value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+              <select style={styles.select} value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); setAppraisalPage(1); }}>
                 <option value="">All statuses</option>
                 {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
               </select>
             </div>
 
-            <form className="nasida-card" style={styles.card} onSubmit={submitAppraisal}>
+            {showAppraisalForm && <form className="nasida-card" style={styles.card} onSubmit={submitAppraisal}>
               <h3 style={styles.cardTitle}>{editingA ? "Edit activity" : "Log new activity"}</h3>
               <div style={styles.formGrid}>
                 <Field label="Department">
@@ -1520,7 +1630,18 @@ export default function App() {
                     {user.role === "admin" ? DEPARTMENTS.map((d) => <option key={d} value={d}>{d}</option>) : <option value={user.department}>{user.department}</option>}
                   </select>
                 </Field>
-                <Field label="Period"><input style={styles.input} placeholder="e.g. Q2 2026" value={formA.period} onChange={(e) => setFormA({ ...formA, period: e.target.value })} /></Field>
+                <Field label="Period">
+                  <div style={{ display: "flex", gap: 8 }}>
+                    <select aria-label="Period year" required style={{ ...styles.input, flex: 1 }} value={appraisalPeriodYear} onChange={(e) => updateAppraisalPeriod("year", e.target.value)}>
+                      <option value="">Select year</option>
+                      {appraisalYears.map((year) => <option key={year} value={year}>{year}</option>)}
+                    </select>
+                    <select aria-label="Period quarter" required style={{ ...styles.input, flex: 1 }} value={appraisalPeriodQuarter} onChange={(e) => updateAppraisalPeriod("quarter", e.target.value)}>
+                      <option value="">Select quarter</option>
+                      {["Q1", "Q2", "Q3", "Q4"].map((quarter) => <option key={quarter} value={quarter}>{quarter}</option>)}
+                    </select>
+                  </div>
+                </Field>
                 <Field label="Status">
                   <select style={styles.input} value={formA.status} onChange={(e) => setFormA({ ...formA, status: e.target.value })}>
                     {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
@@ -1535,19 +1656,28 @@ export default function App() {
               </div>
               <div style={styles.formActions}>
                 <button type="submit" className="nasida-btn" style={styles.btnPrimary}>{editingA ? <><Pencil size={14} /> Save changes</> : <><Plus size={14} /> Add record</>}</button>
-                {editingA && <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => { setEditingA(null); setFormA(emptyAppraisal()); }}><X size={14} /> Cancel</button>}
+                {editingA && <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => { setEditingA(null); setFormA(emptyAppraisal()); setAppraisalPeriodYear(""); setAppraisalPeriodQuarter(""); setShowAppraisalForm(false); }}><X size={14} /> Cancel</button>}
               </div>
-            </form>
+            </form>}
 
-            <div style={styles.tableWrap}>
+            <div className="nasida-register-toolbar">
+              <div className="nasida-register-meta">
+                {visibleAppraisals.length === filteredAppraisals.length ? `${filteredAppraisals.length} records` : `${visibleAppraisals.length} of ${filteredAppraisals.length} records`}
+              </div>
+              <label className="nasida-register-search">
+                <Search size={15} aria-hidden="true" />
+                <input type="search" aria-label="Search appraisal records" placeholder="Search activities" value={appraisalSearch} onChange={(event) => { setAppraisalSearch(event.target.value); setAppraisalPage(1); }} />
+              </label>
+            </div>
+            <div className="nasida-table-wrap nasida-appraisal-table" style={styles.tableWrap}>
               <table style={styles.table}>
                 <thead><tr>{["S/N", "Dept", "Period", "Activity", "Outcome", "Status", "MoVs", "Comments", ""].map((h) => <th key={h} style={styles.th}>{h}</th>)}</tr></thead>
                 <tbody>
-                  {filteredAppraisals.map((r, index) => {
+                  {appraisalPagination.rows.map((r, index) => {
                     const movLinks = parseMovLinks(r.mov);
                     return (
                       <tr key={r.id} className="nasida-row">
-                        <td style={styles.td}>{index + 1}</td>
+                        <td style={styles.td}>{(appraisalPagination.page - 1) * RECORDS_PER_PAGE + index + 1}</td>
                         <td style={styles.td}>{r.department}</td>
                         <td style={styles.td}>{r.period}</td>
                         <td style={styles.td}>{r.activity}</td>
@@ -1570,17 +1700,21 @@ export default function App() {
                         <td style={styles.td}>
                           {canEditDept(r.department) && (
                             <>
-                              <button style={styles.smallBtn} onClick={() => { setEditingA(r.id); setFormA(r); }}><Pencil size={12} /></button>
-                              <button style={styles.smallBtn} onClick={() => deleteAppraisal(r.id)}><Trash2 size={12} /></button>
+                              <button style={styles.smallBtn} aria-label={`Edit ${r.activity || "appraisal"}`} title="Edit appraisal" onClick={() => { setEditingA(r.id); setFormA(r); loadAppraisalPeriod(r.period); setShowAppraisalForm(true); }}><Pencil size={12} /></button>
+                              <button style={styles.smallBtn} aria-label={`Delete ${r.activity || "appraisal"}`} title="Delete appraisal" onClick={() => deleteAppraisal(r.id)}><Trash2 size={12} /></button>
                             </>
                           )}
                         </td>
                       </tr>
                     );
                   })}
+                  {!visibleAppraisals.length && (
+                    <tr><td style={styles.td} colSpan={9}>{appraisalSearch ? "No records match your search." : "No appraisal records match the selected filters."}</td></tr>
+                  )}
                 </tbody>
               </table>
             </div>
+            <Pagination page={appraisalPagination.page} pageCount={appraisalPagination.pageCount} total={visibleAppraisals.length} onPageChange={setAppraisalPage} />
           </section>
         )}
 
@@ -1598,6 +1732,14 @@ export default function App() {
                 <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => exportInvestments("xlsx", displayedInvestments)}>
                   <Download size={14} /> Excel
                 </button>
+                {user.role === "admin" && investmentView === "all" && (
+                  <button type="button" className="nasida-btn" style={styles.btnPrimary} onClick={() => {
+                    if (showInvestmentForm) { setEditingI(null); setFormI(emptyInvestment()); }
+                    setShowInvestmentForm((showing) => !showing);
+                  }}>
+                    {showInvestmentForm ? <><X size={14} /> Close form</> : <><Plus size={14} /> Add investment</>}
+                  </button>
+                )}
               </div>
             </div>
 
@@ -1606,14 +1748,14 @@ export default function App() {
                 <div style={{ ...styles.panelHeader, flexWrap: "wrap" }}>
                   <div style={styles.segmentGroup} role="group" aria-label="Select quarter">
                     {[1, 2, 3, 4].map((quarter) => (
-                      <button key={quarter} type="button" className="nasida-pill" style={{ ...styles.segmentBtn, ...(investmentQuarter === quarter ? styles.segmentBtnActive : {}) }} onClick={() => setInvestmentQuarter(quarter)}>
+                      <button key={quarter} type="button" className="nasida-pill" style={{ ...styles.segmentBtn, ...(investmentQuarter === quarter ? styles.segmentBtnActive : {}) }} onClick={() => { setInvestmentQuarter(quarter); setInvestmentPage(1); }}>
                         Q{quarter}
                       </button>
                     ))}
                   </div>
                   <label style={{ ...styles.field, minWidth: 150 }}>
                     <span style={styles.fieldLabel}>Year</span>
-                    <select style={styles.input} value={investmentYear} onChange={(event) => setInvestmentYear(event.target.value)}>
+                    <select style={styles.input} value={investmentYear} onChange={(event) => { setInvestmentYear(event.target.value); setInvestmentPage(1); }}>
                       {investmentYears.map((year) => <option key={year} value={year}>{year}</option>)}
                     </select>
                   </label>
@@ -1622,7 +1764,7 @@ export default function App() {
               </div>
             )}
 
-            {user.role === "admin" && investmentView === "all" && (
+            {user.role === "admin" && investmentView === "all" && showInvestmentForm && (
               <form className="nasida-card" style={styles.card} onSubmit={submitInvestment}>
                 <h3 style={styles.cardTitle}>{editingI ? "Edit investment" : "Log new investment"}</h3>
                 <div style={styles.formGrid}>
@@ -1653,7 +1795,7 @@ export default function App() {
                 </div>
                 <div style={styles.formActions}>
                   <button type="submit" className="nasida-btn" style={styles.btnPrimary}>{editingI ? <><Pencil size={14} /> Save changes</> : <><Plus size={14} /> Add investment</>}</button>
-                  {editingI && <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => { setEditingI(null); setFormI(emptyInvestment()); }}><X size={14} /> Cancel</button>}
+                  {editingI && <button type="button" className="nasida-btn" style={styles.btnGhost} onClick={() => { setEditingI(null); setFormI(emptyInvestment()); setShowInvestmentForm(false); }}><X size={14} /> Cancel</button>}
                 </div>
               </form>
             )}
@@ -1715,13 +1857,22 @@ export default function App() {
               </div>
             )}
 
-            <div style={styles.tableWrap}>
+            <div className="nasida-register-toolbar">
+              <div className="nasida-register-meta">
+                {visibleInvestments.length === displayedInvestments.length ? `${displayedInvestments.length} records` : `${visibleInvestments.length} of ${displayedInvestments.length} records`}
+              </div>
+              <label className="nasida-register-search">
+                <Search size={15} aria-hidden="true" />
+                <input type="search" aria-label="Search investment records" placeholder="Search investments" value={investmentSearch} onChange={(event) => { setInvestmentSearch(event.target.value); setInvestmentPage(1); }} />
+              </label>
+            </div>
+            <div className="nasida-table-wrap nasida-investment-table" style={styles.tableWrap}>
               <table style={styles.table}>
                 <thead><tr>{["S/N", "Company/Investor", "Project Description", "Department", "Sector", "LGA", "Amount", "Source", "Status", "Jobs", "Date", user.role === "admin" ? "" : null].filter((h) => h !== null).map((h, i) => <th key={i} style={styles.th}>{h}</th>)}</tr></thead>
                 <tbody>
-                  {displayedInvestments.map((r, index) => (
+                  {investmentPagination.rows.map((r, index) => (
                     <tr key={r.id} className="nasida-row">
-                      <td style={styles.td}>{index + 1}</td>
+                      <td style={styles.td}>{(investmentPagination.page - 1) * RECORDS_PER_PAGE + index + 1}</td>
                       <td style={styles.td}>{r.company_investor}</td>
                       <td style={styles.td}>{r.project_description || "—"}</td>
                       <td style={styles.td}>{r.department}</td>
@@ -1734,18 +1885,19 @@ export default function App() {
                       <td style={styles.td}>{r.date_recorded}</td>
                       {user.role === "admin" && (
                         <td style={styles.td}>
-                          <button style={styles.smallBtn} onClick={() => { setEditingI(r.id); setFormI(r); }}><Pencil size={12} /></button>
-                          <button style={styles.smallBtn} onClick={() => deleteInvestment(r.id)}><Trash2 size={12} /></button>
+                          <button style={styles.smallBtn} aria-label={`Edit ${r.company_investor}`} title="Edit investment" onClick={() => { setEditingI(r.id); setFormI(r); setShowInvestmentForm(true); }}><Pencil size={12} /></button>
+                          <button style={styles.smallBtn} aria-label={`Delete ${r.company_investor}`} title="Delete investment" onClick={() => deleteInvestment(r.id)}><Trash2 size={12} /></button>
                         </td>
                       )}
                     </tr>
                   ))}
-                  {!displayedInvestments.length && (
-                    <tr><td style={styles.td} colSpan={user.role === "admin" ? 12 : 11}>No investment records for Q{investmentQuarter} {investmentYear}.</td></tr>
+                  {!visibleInvestments.length && (
+                    <tr><td style={styles.td} colSpan={user.role === "admin" ? 12 : 11}>{investmentSearch ? "No records match your search." : investmentView === "quarterly" ? `No investment records for Q${investmentQuarter} ${investmentYear}.` : "No investment records yet."}</td></tr>
                   )}
                 </tbody>
               </table>
             </div>
+            <Pagination page={investmentPagination.page} pageCount={investmentPagination.pageCount} total={visibleInvestments.length} onPageChange={setInvestmentPage} />
           </section>
         )}
 
@@ -1759,7 +1911,7 @@ export default function App() {
               <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
                 <div style={styles.segmentGroup}>
                   {["All", "Male", "Female"].map((g) => (
-                    <button key={g} className="nasida-pill" style={{ ...styles.segmentBtn, ...(wfGender === g ? styles.segmentBtnActive : {}) }} onClick={() => setWfGender(g)}>
+                    <button key={g} className="nasida-pill" style={{ ...styles.segmentBtn, ...(wfGender === g ? styles.segmentBtnActive : {}) }} onClick={() => { setWfGender(g); setWorkforcePage(1); }}>
                       {g}
                     </button>
                   ))}
@@ -1791,12 +1943,12 @@ export default function App() {
                 <div className="nasida-card" style={styles.filterGroup}>
                   <div style={styles.filterGroupTitle}>Workforce filters</div>
                   <div style={styles.filterRow}>
-                    <select style={styles.select} value={wfStatus} onChange={(e) => setWfStatus(e.target.value)}>
+                    <select style={styles.select} value={wfStatus} onChange={(e) => { setWfStatus(e.target.value); setWorkforcePage(1); }}>
                       <option value="">All employee statuses</option>
                       <option value="Active">Active</option>
                       <option value="Exited">Exited</option>
                     </select>
-                    <select style={styles.select} value={wfJobCategory} onChange={(e) => setWfJobCategory(e.target.value)}>
+                    <select style={styles.select} value={wfJobCategory} onChange={(e) => { setWfJobCategory(e.target.value); setWorkforcePage(1); }}>
                       <option value="">All job categories</option>
                       {JOB_CATEGORIES.map((category) => <option key={category} value={category}>{category}</option>)}
                     </select>
@@ -1840,7 +1992,7 @@ export default function App() {
                 ]} />
             </div>
 
-            <div style={styles.workforceChartRow}>
+            <div className="nasida-workforce-chart-row">
             <div className="nasida-card" style={styles.panel}>
               <div style={styles.panelHeader}>
                 <div>
@@ -1872,7 +2024,7 @@ export default function App() {
                   <div style={styles.panelSub}>{wfGender === "All" ? "Split by gender" : `${wfGender} staff only`}</div>
                 </div>
               </div>
-              <ResponsiveContainer width="100%" height={240}>
+              <ResponsiveContainer width="100%" height={260}>
                 <BarChart data={workforceSummary.byJobCategory}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e7ebe6" />
                   <XAxis dataKey="job_category" tick={{ fontSize: 10 }} />
@@ -2122,9 +2274,9 @@ export default function App() {
                       <tr>{["S/N", "Name", "Department", "Gender", "Job category", "Designation", "Status", "Hire date", "Exit date", ""].map((h) => <th key={h} style={styles.th}>{h}</th>)}</tr>
                     </thead>
                     <tbody>
-                      {filteredEmployees.map((r, index) => (
+                      {workforcePagination.rows.map((r, index) => (
                         <tr key={r.id} className="nasida-row">
-                          <td style={styles.td}>{index + 1}</td>
+                          <td style={styles.td}>{(workforcePagination.page - 1) * RECORDS_PER_PAGE + index + 1}</td>
                           <td style={styles.td}>{r.name}</td>
                           <td style={styles.td}>{r.department || "—"}</td>
                           <td style={styles.td}>{r.gender}</td>
@@ -2139,9 +2291,11 @@ export default function App() {
                           </td>
                         </tr>
                       ))}
+                      {!filteredEmployees.length && <tr><td style={styles.td} colSpan={10}>No employee records match the selected filters.</td></tr>}
                     </tbody>
                   </table>
                 </div>
+                <Pagination page={workforcePagination.page} pageCount={workforcePagination.pageCount} total={filteredEmployees.length} onPageChange={setWorkforcePage} />
               </>
             )}
           </section>
@@ -2205,7 +2359,7 @@ export default function App() {
 
             <h3 style={styles.cardTitle}>Saved KPIs</h3>
             <div style={styles.customKpiRow}>
-              {customKpis.map((k) => {
+              {customKpiPagination.rows.map((k) => {
                 let value, error;
                 try { value = evaluateKpiFormula(k.formula, k.dataset === "appraisals" ? appraisals : investments); }
                 catch (e) { error = e.message; }
@@ -2226,6 +2380,7 @@ export default function App() {
                 );
               })}
             </div>
+            <Pagination page={customKpiPagination.page} pageCount={customKpiPagination.pageCount} total={customKpis.length} onPageChange={setCustomKpiPage} />
           </section>
         )}
 
@@ -2239,7 +2394,7 @@ export default function App() {
               <table style={styles.table}>
                 <thead><tr>{["Name", "Role", "Department", "Joined"].map((h) => <th key={h} style={styles.th}>{h}</th>)}</tr></thead>
                 <tbody>
-                  {allProfiles.map((p) => (
+                  {profilePagination.rows.map((p) => (
                     <tr key={p.id} className="nasida-row">
                       <td style={styles.td}>{p.name}</td>
                       <td style={styles.td}>{p.role === "admin" ? "Admin" : "Staff"}</td>
@@ -2247,9 +2402,11 @@ export default function App() {
                       <td style={styles.td}>{p.created_at ? new Date(p.created_at).toLocaleDateString() : "—"}</td>
                     </tr>
                   ))}
+                  {!allProfiles.length && <tr><td style={styles.td} colSpan={4}>No user profiles found.</td></tr>}
                 </tbody>
               </table>
             </div>
+            <Pagination page={profilePagination.page} pageCount={profilePagination.pageCount} total={allProfiles.length} onPageChange={setProfilePage} />
           </section>
         )}
       </motion.main>
@@ -2259,17 +2416,17 @@ export default function App() {
 
 function KpiCard({ icon: Icon, label, value, subs }) {
   return (
-    <div className="nasida-card" style={styles.kpiCard}>
+    <div className="nasida-card nasida-kpi-card" style={styles.kpiCard}>
       <div style={styles.kpiTopRow}>
-        <div style={styles.kpiIconCircle}><Icon size={16} strokeWidth={2.2} /></div>
-        <span style={styles.kpiLabel}>{label}</span>
+        <div className="nasida-kpi-icon" style={styles.kpiIconCircle}><Icon size={16} strokeWidth={2.2} /></div>
+        <span className="nasida-kpi-label" style={styles.kpiLabel}>{label}</span>
       </div>
-      <div style={styles.kpiValue}>{value}</div>
+      <div className="nasida-kpi-value" style={styles.kpiValue}>{value}</div>
       <div style={styles.kpiSubsRow}>
         {subs.map((s, i) => (
           <div key={i} style={{ ...styles.kpiSub, ...(i > 0 ? styles.kpiSubBorder : {}) }}>
-            <div style={{ ...styles.kpiSubValue, color: s.tone === "up" ? "#42AD4E" : s.tone === "down" ? "#b5493f" : "#153C20" }}>{s.value}</div>
-            <div style={styles.kpiSubLabel}>{s.label}</div>
+            <div className="nasida-kpi-sub-value" style={{ ...styles.kpiSubValue, color: s.tone === "up" ? "#42AD4E" : s.tone === "down" ? "#b5493f" : "#153C20" }}>{s.value}</div>
+            <div className="nasida-kpi-sub-label" style={styles.kpiSubLabel}>{s.label}</div>
           </div>
         ))}
       </div>
@@ -2290,6 +2447,29 @@ function Field({ label, children, full }) {
       <span style={styles.fieldLabel}>{label}</span>
       {children}
     </label>
+  );
+}
+function Pagination({ page, pageCount, total, onPageChange }) {
+  const firstRecord = total ? (page - 1) * RECORDS_PER_PAGE + 1 : 0;
+  const lastRecord = Math.min(page * RECORDS_PER_PAGE, total);
+  const buttonStyle = {
+    padding: "6px 10px",
+    border: "1px solid #c3cec7",
+    borderRadius: 6,
+    background: "#fff",
+    color: "#354039",
+    fontSize: 12,
+    cursor: "pointer",
+  };
+  return (
+    <div style={styles.pagination}>
+      <span style={styles.paginationMeta}>Showing {firstRecord}-{lastRecord} of {total}</span>
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <button type="button" style={buttonStyle} onClick={() => onPageChange(page - 1)} disabled={page <= 1}>Previous</button>
+        <span style={styles.paginationMeta}>Page {page} of {pageCount}</span>
+        <button type="button" style={buttonStyle} onClick={() => onPageChange(page + 1)} disabled={page >= pageCount}>Next</button>
+      </div>
+    </div>
   );
 }
 function Badge({ color, children }) {
@@ -2342,7 +2522,7 @@ const styles = {
   filterRow: { display: "flex", gap: 8, flexWrap: "wrap" },
 
   kpiRow: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16, marginBottom: 18 },
-  kpiCard: { background: "#fff", borderRadius: 12, padding: "18px 20px", boxShadow: "0 1px 3px rgba(21,60,32,0.06), 0 1px 12px rgba(21,60,32,0.05)" },
+  kpiCard: { padding: "18px 20px" },
   kpiTopRow: { display: "flex", alignItems: "center", gap: 8, marginBottom: 10 },
   kpiIconCircle: { width: 28, height: 28, borderRadius: "50%", background: "#EAF5E8", color: "#153C20", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 },
   kpiLabel: { fontSize: 10.5, fontWeight: 700, letterSpacing: 0.6, color: "#7a877f", textTransform: "uppercase" },
@@ -2353,11 +2533,11 @@ const styles = {
   kpiSubValue: { fontSize: 13, fontWeight: 700 },
   kpiSubLabel: { fontSize: 9, color: "#9aa79f", fontWeight: 600, letterSpacing: 0.3, marginTop: 2 },
 
-  insightsCard: { background: "#153C20", borderRadius: 12, padding: "16px 20px", marginBottom: 18, color: "#fff" },
-  insightsTitleRow: { marginBottom: 8 },
-  insightsTitle: { fontSize: 12.5, fontWeight: 700, color: "#d9a441" },
+  insightsCard: { padding: "16px 20px", marginBottom: 18 },
+  insightsTitleRow: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginBottom: 8, flexWrap: "wrap" },
+  insightsTitle: { fontSize: 11.5, fontWeight: 800, color: "#153C20", letterSpacing: 0.7 },
   insightsList: { margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 6 },
-  insightItem: { fontSize: 12.5, lineHeight: 1.5, color: "#e9f3ec" },
+  insightItem: { fontSize: 12.5, lineHeight: 1.55, color: "#455948" },
 
   twoColGrid: { display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 16, marginBottom: 18 },
   panel: { background: "#fff", borderRadius: 12, padding: "18px 20px", boxShadow: "0 1px 3px rgba(21,60,32,0.06), 0 1px 12px rgba(21,60,32,0.05)" },
@@ -2416,6 +2596,8 @@ const styles = {
   formGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 },
   field: { display: "flex", flexDirection: "column", gap: 4, fontSize: 12.5, fontWeight: 600, color: "#354039" },
   fieldLabel: { marginBottom: 2 },
+  pagination: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap", margin: "10px 0 18px" },
+  paginationMeta: { color: "#66776a", fontSize: 12, fontWeight: 600 },
   input: { padding: "8px 9px", borderRadius: 8, border: "1px solid #c3cec7", fontWeight: 400, fontSize: 13, fontFamily: "inherit" },
   textarea: { padding: "8px 9px", borderRadius: 8, border: "1px solid #c3cec7", fontWeight: 400, fontSize: 13, minHeight: 56, fontFamily: "inherit", resize: "vertical" },
   formActions: { display: "flex", gap: 10, marginTop: 14 },

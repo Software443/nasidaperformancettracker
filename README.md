@@ -76,6 +76,12 @@ account you created in step 2.
   `evaluateKpiFormula` function in `App.jsx`) against data already fetched through
   Supabase's normal RLS-protected API. Formulas are never sent to Postgres as SQL,
   so there's no injection risk in letting admins write their own formula text.
+- **Annual Awards** provides a year-by-year, evidence-based department shortlist
+  using a transparent local scorecard: delivery (40%), reported outcomes (25%),
+  supporting evidence (20%), and objectives/indicators (15%). The review includes
+  each department's activities and evidence for human verification. This is
+  decision support, not a generative AI model or a final award decision; appraisal
+  data is not sent to an external AI service.
 
 ## 6. Deploying it for real use
 

@@ -579,6 +579,9 @@ export default function App() {
   const [wfGender, setWfGender] = useState("All");
   const [wfStatus, setWfStatus] = useState("");
   const [wfJobCategory, setWfJobCategory] = useState("");
+  const [wfQuarter, setWfQuarter] = useState("");
+  const [wfDepartment, setWfDepartment] = useState("");
+  const [wfView, setWfView] = useState("workforce");
   const [editingE, setEditingE] = useState(null);
   const emptyEmployee = () => ({
     name: "", department: DEPARTMENTS[0], gender: "Male", job_category: "Fulltime",
@@ -609,10 +612,14 @@ export default function App() {
     setFormE({ ...r, exit_date: r.exit_date || "" });
   }
 
-  const filteredEmployees = useMemo(() => employees.filter((employee) =>
-    (!wfStatus || employee.status === wfStatus) &&
-    (!wfJobCategory || employee.job_category === wfJobCategory)
-  ), [employees, wfStatus, wfJobCategory]);
+  const filteredEmployees = useMemo(() => employees.filter((employee) => {
+    const hireMonth = Number(String(employee.hire_date || "").slice(5, 7));
+    const hireQuarter = hireMonth >= 1 && hireMonth <= 12 ? Math.ceil(hireMonth / 3) : null;
+    return (!wfStatus || employee.status === wfStatus) &&
+      (!wfJobCategory || employee.job_category === wfJobCategory) &&
+      (!wfDepartment || employee.department === wfDepartment) &&
+      (!wfQuarter || String(hireQuarter) === wfQuarter);
+  }), [employees, wfStatus, wfJobCategory, wfDepartment, wfQuarter]);
   const workforcePagination = getPageData(filteredEmployees, workforcePage);
 
   const workforceSummary = useMemo(() => {
@@ -626,10 +633,10 @@ export default function App() {
     const avgTenure = active.length ? active.reduce((sum, e) => sum + yearsBetween(e.hire_date, null), 0) / active.length : 0;
     const newHires = active.filter((e) => new Date(e.hire_date) >= new Date("2025-01-01")).length;
 
-    // Whole-workforce baselines, used for "share of total" context when a single gender is selected.
-    const allActive = employees.filter((e) => e.status === "Active");
+    // Scope gender baselines to every selected workforce filter, including department.
+    const allActive = filteredEmployees.filter((e) => e.status === "Active");
     const femaleActiveAll = allActive.filter((e) => e.gender === "Female").length;
-    const maleActiveAll = allActive.length - femaleActiveAll;
+    const maleActiveAll = allActive.filter((e) => e.gender === "Male").length;
     const femalePctAll = allActive.length ? Math.round((femaleActiveAll / allActive.length) * 100) : 0;
     const shareOfTotal = allActive.length ? Math.round((totalStaff / allActive.length) * 100) : 0;
 
@@ -840,7 +847,7 @@ export default function App() {
   function resetWfFilters() {
     setWfSpinning(true);
     setOvDept(""); setOvStatus("");
-    setWfStatus(""); setWfJobCategory("");
+    setWfStatus(""); setWfJobCategory(""); setWfQuarter(""); setWfDepartment("");
     setWorkforcePage(1);
     setTimeout(() => setWfSpinning(false), 500);
   }
@@ -871,8 +878,12 @@ export default function App() {
   const customKpiPagination = getPageData(customKpis, customKpiPage);
 
   const ovAppraisals = useMemo(() => {
-    return appraisals.filter((r) => (!ovDept || r.department === ovDept) && (!ovStatus || normalizeAppraisalStatus(r.status) === ovStatus));
-  }, [appraisals, ovDept, ovStatus]);
+    return appraisals.filter((r) =>
+      (!ovDept || r.department === ovDept) &&
+      (!ovStatus || normalizeAppraisalStatus(r.status) === ovStatus) &&
+      (!wfQuarter || new RegExp(`\\bQ${wfQuarter}\\b`, "i").test(String(r.period || "")))
+    );
+  }, [appraisals, ovDept, ovStatus, wfQuarter]);
 
   const ovInvestments = useMemo(() => {
     return investments.filter((r) => (!ovSector || normalizeName(r.sector) === normalizeName(ovSector)) && (!ovLga || normalizeName(r.lga) === normalizeName(ovLga)) && (!ovSource || r.source === ovSource) && (!ovInvestStatus || r.status === ovInvestStatus));
@@ -1142,6 +1153,11 @@ export default function App() {
       .nasida-appraisal-table td { vertical-align: middle !important; border-bottom-color: #eef2eb; }
       .nasida-appraisal-table tbody tr:nth-child(even) { background: #fafcf9; }
       .nasida-appraisal-table td:nth-child(1), .nasida-appraisal-table td:nth-child(2), .nasida-appraisal-table td:nth-child(3), .nasida-appraisal-table td:nth-child(6) { white-space: nowrap; }
+      .nasida-workforce-table { border: 1px solid #dfe8dc; border-radius: 10px; }
+      .nasida-workforce-table table { min-width: 1040px; }
+      .nasida-workforce-table th { position: sticky; top: 0; z-index: 1; background: #246B2A !important; color: #fff !important; font-size: 10px !important; letter-spacing: .45px; text-transform: uppercase; }
+      .nasida-workforce-table td { vertical-align: middle !important; border-bottom-color: #eef2eb; }
+      .nasida-workforce-table tbody tr:nth-child(even) { background: #fafcf9; }
       .nasida-icon-btn { transition: background .15s ease, transform .15s ease; cursor: pointer; }
       .nasida-icon-btn:hover { background: #EFF6EC; }
       .nasida-spin { animation: nasidaSpin 0.5s linear; }
@@ -1948,9 +1964,20 @@ export default function App() {
                       <option value="Active">Active</option>
                       <option value="Exited">Exited</option>
                     </select>
+                    <select style={styles.select} value={wfDepartment} onChange={(e) => { setWfDepartment(e.target.value); setWorkforcePage(1); }}>
+                      <option value="">All departments</option>
+                      {DEPARTMENTS.map((department) => <option key={department} value={department}>{department}</option>)}
+                    </select>
                     <select style={styles.select} value={wfJobCategory} onChange={(e) => { setWfJobCategory(e.target.value); setWorkforcePage(1); }}>
                       <option value="">All job categories</option>
                       {JOB_CATEGORIES.map((category) => <option key={category} value={category}>{category}</option>)}
+                    </select>
+                    <select style={styles.select} value={wfQuarter} onChange={(e) => { setWfQuarter(e.target.value); setWorkforcePage(1); }}>
+                      <option value="">All quarters</option>
+                      <option value="1">Q1</option>
+                      <option value="2">Q2</option>
+                      <option value="3">Q3</option>
+                      <option value="4">Q4</option>
                     </select>
                   </div>
                 </div>
@@ -1992,6 +2019,25 @@ export default function App() {
                 ]} />
             </div>
 
+            <div style={{ ...styles.segmentGroup, width: "fit-content", marginBottom: 18 }}>
+              {[
+                ["workforce", "Workforce"],
+                ["appraisal", "Appraisal"],
+              ].map(([view, label]) => (
+                <button
+                  key={view}
+                  type="button"
+                  className="nasida-pill"
+                  style={{ ...styles.segmentBtn, ...(wfView === view ? styles.segmentBtnActive : {}) }}
+                  onClick={() => setWfView(view)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            {wfView === "workforce" && (
+              <>
             <div className="nasida-workforce-chart-row">
             <div className="nasida-card" style={styles.panel}>
               <div style={styles.panelHeader}>
@@ -2067,6 +2113,11 @@ export default function App() {
               </ResponsiveContainer>
             </div>
 
+              </>
+            )}
+
+            {wfView === "appraisal" && (
+              <>
             <div style={styles.sectionLabel}>Department analytics</div>
             <div className="nasida-card" style={styles.panel}>
               <div style={styles.panelHeader}>
@@ -2210,7 +2261,10 @@ export default function App() {
               </div>
             </div>
 
-            {user.role === "admin" && (
+              </>
+            )}
+
+            {wfView === "workforce" && user.role === "admin" && (
               <>
                 <div style={styles.sectionLabel}>Manage employee records</div>
                 <form className="nasida-card" style={styles.card} onSubmit={submitEmployee}>
@@ -2268,7 +2322,7 @@ export default function App() {
                   </div>
                 </form>
 
-                <div style={styles.tableWrap}>
+                <div className="nasida-workforce-table" style={styles.tableWrap}>
                   <table style={styles.table}>
                     <thead>
                       <tr>{["S/N", "Name", "Department", "Gender", "Job category", "Designation", "Status", "Hire date", "Exit date", ""].map((h) => <th key={h} style={styles.th}>{h}</th>)}</tr>
@@ -2516,7 +2570,7 @@ const styles = {
   modalHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10, color: "#153C20" },
   modalText: { fontSize: 13, color: "#4a564e", lineHeight: 1.6, margin: 0 },
 
-  filterBar: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14, marginBottom: 18 },
+  filterBar: { position: "sticky", top: 12, zIndex: 20, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14, marginBottom: 18, padding: "10px", borderRadius: 12, background: "rgba(242, 247, 238, 0.96)", boxShadow: "0 8px 24px rgba(21,60,32,0.12)", backdropFilter: "blur(8px)" },
   filterGroup: { background: "#fff", border: "1px solid #dfe6e1", borderRadius: 10, padding: "12px 14px" },
   filterGroupTitle: { fontSize: 11.5, fontWeight: 700, color: "#5b6b62", marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.4 },
   filterRow: { display: "flex", gap: 8, flexWrap: "wrap" },
